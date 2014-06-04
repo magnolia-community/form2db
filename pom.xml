@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+    
+  <groupId>de.marvinkerkhoff</groupId>
+  <artifactId>form2db-app</artifactId>
+  <version>1.0.0</version>
+  <packaging>jar</packaging>
+  <name>form2db-app Magnolia Module</name>  
+  <description>With this app you can save your form data in a generic app and export it to excel.</description>
+  
+  <organization>
+    <name>Marvin Kerkhoff</name>
+    <url>http://www.marvinkerkhoff.de</url>
+  </organization>
+  
+  <properties>
+    <magnoliaVersion>5.2.4</magnoliaVersion>
+    <javaVersion>1.7</javaVersion>
+    <magnoliaSTKVersion>2.7.4</magnoliaSTKVersion> 
+  </properties>
+  
+  <licenses>
+    <license>
+      <name>GPL, Version 3.0</name>
+      <url>http://www.gnu.org/licenses/gpl-3.0.html</url>
+    </license>
+  </licenses>
+
+  <dependencies>
+    <dependency>
+      <groupId>info.magnolia</groupId>
+      <artifactId>magnolia-core</artifactId>
+      <version>${magnoliaVersion}</version>
+    </dependency>
+	<dependency>
+	  <groupId>info.magnolia</groupId>
+	  <artifactId>magnolia-module-standard-templating-kit</artifactId>
+	  <version>${magnoliaSTKVersion}</version>
+	</dependency>
+    <dependency>
+      <groupId>info.magnolia.ui</groupId>
+      <artifactId>magnolia-ui-api</artifactId>
+      <version>${magnoliaVersion}</version>
+      </dependency>
+    <dependency>
+      <groupId>info.magnolia.ui</groupId>
+  	  <artifactId>magnolia-ui-framework</artifactId>
+      <version>${magnoliaVersion}</version>
+    </dependency>
+    <dependency>
+      <groupId>info.magnolia.ui</groupId>
+  	  <artifactId>magnolia-ui-contentapp</artifactId>
+      <version>${magnoliaVersion}</version>
+    </dependency>
+    <dependency>
+		<groupId>org.apache.poi</groupId>
+		<artifactId>poi</artifactId>
+		<version>3.9</version>
+	</dependency>
+    <dependency>
+	    <groupId>org.apache.poi</groupId>
+	    <artifactId>poi-ooxml</artifactId>
+	    <version>3.9</version>
+	</dependency>
+                
+   	<dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>servlet-api</artifactId>
+      <version>2.5</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <!-- TEST -->
+    <dependency>
+      <groupId>junit</groupId>
+      <artifactId>junit</artifactId>
+      <version>4.8.2</version>
+      <scope>test</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>2.3.2</version>
+        <configuration>
+          <source>${javaVersion}</source>
+          <target>${javaVersion}</target>
+        </configuration>
+      </plugin>
+    </plugins>
+
+    <!-- default resources configuration which will filter the module descriptor -->
+    <resources>
+      <resource>
+        <directory>src/main/resources</directory>
+        <includes>
+          <include>**/*</include>
+        </includes>
+      </resource>
+      <resource>
+        <filtering>true</filtering>
+        <directory>src/main/resources</directory>
+        <includes>
+          <include>META-INF/magnolia/*</include>
+        </includes>
+      </resource>
+    </resources>
+  </build>
+
+  <repositories>
+    <repository>
+      <id>magnolia.public</id>
+      <url>http://nexus.magnolia-cms.com/content/groups/public</url>
+      <snapshots>
+      </snapshots>
+    </repository>
+    <repository>
+	  <id>vaadin-addons</id>
+	  <url>http://maven.vaadin.com/vaadin-addons</url>
+    </repository>
+  </repositories>
+   
+  <distributionManagement>
+  <repository>
+    <id>magnolia.forge.releases</id>
+    <url>http://nexus.magnolia-cms.com/content/repositories/magnolia.forge.releases</url>
+  </repository>
+  <snapshotRepository>
+    <id>magnolia.forge.snapshots</id>
+    <url>http://nexus.magnolia-cms.com/content/repositories/magnolia.forge.snapshots</url>
+  </snapshotRepository>
+  <site>
+    <id>magnolia.forge.sites</id>
+    <url>dav:http://nexus.magnolia-cms.com/content/sites/magnolia.forge.sites/${artifactId}/${project.version}</url>
+  </site>
+  </distributionManagement>
+  
+  <scm>
+    <connection>scm:git:http://git.magnolia-cms.com/forge/form2db-app.git</connection>
+    <developerConnection>scm:git:https://git.magnolia-cms.com/forge/form2db-app.git</developerConnection>
+    <url>http://git.magnolia-cms.com/gitweb/?p=forge/form2db-app.git</url>
+    <tag>HEAD</tag>
+  </scm>
+
+</project>

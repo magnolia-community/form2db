@@ -65,27 +65,13 @@
     xmlns:mix="http://www.jcp.org/jcr/mix/1.0"
     xmlns:mgnl="http://www.magnolia.info/jcr/mgnl"
     xmlns:jcr="http://www.jcp.org/jcr/1.0">
-   
-  <nodeType name="mgnl:folder" isMixin="false" hasOrderableChildNodes="true" primaryItemName="">
-      <supertypes>
-        <supertype>nt:folder</supertype>
-        <supertype>mix:referenceable</supertype>
-        <supertype>mgnl:created</supertype>
-        <supertype>mgnl:activatable</supertype>
-        <supertype>mgnl:lastModified</supertype>
-      </supertypes>
-      <childNodeDefinition name="*" defaultPrimaryType="" autoCreated="false" mandatory="false" onParentVersion="COPY" protected="false" sameNameSiblings="false">
-        <requiredPrimaryTypes>
-          <requiredPrimaryType>nt:base</requiredPrimaryType>
-        </requiredPrimaryTypes>
-      </childNodeDefinition>
-      <propertyDefinition name="*" requiredType="undefined" autoCreated="false" mandatory="false" onParentVersion="COPY" protected="false" multiple="false"/>
-      <propertyDefinition name="*" requiredType="undefined" autoCreated="false" mandatory="false" onParentVersion="COPY" protected="false" multiple="true"/>
-  </nodeType>
-   
+       
   <nodeType name="mgnl:formNode" isMixin="false" hasOrderableChildNodes="true" primaryItemName="">
       <supertypes>
         <supertype>nt:folder</supertype>
+        <supertype>mgnl:created</supertype>
+        <supertype>mgnl:lastModifiedBy</supertype>
+        <supertype>mgnl:lastModified</supertype>
         <supertype>mix:referenceable</supertype>
       </supertypes>
       <childNodeDefinition name="*" defaultPrimaryType="" autoCreated="false" mandatory="false" onParentVersion="COPY" protected="false" sameNameSiblings="false">
@@ -96,10 +82,10 @@
       <propertyDefinition name="*" requiredType="undefined" autoCreated="false" mandatory="false" onParentVersion="COPY" protected="false" multiple="false"/>
       <propertyDefinition name="*" requiredType="undefined" autoCreated="false" mandatory="false" onParentVersion="COPY" protected="false" multiple="true"/>
   </nodeType>
-  
+    
   <nodeType name="mgnl:formEntryNode" isMixin="false" hasOrderableChildNodes="true" primaryItemName="">
       <supertypes>
-        <supertype>nt:hierarchyNode</supertype>
+        <supertype>nt:folder</supertype>
       </supertypes>
       <childNodeDefinition name="*" defaultPrimaryType="" autoCreated="false" mandatory="false" onParentVersion="COPY" protected="false" sameNameSiblings="false">
         <requiredPrimaryTypes>

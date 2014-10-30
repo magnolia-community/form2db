@@ -4,7 +4,7 @@
     
   <groupId>de.marvinkerkhoff</groupId>
   <artifactId>form2db-app</artifactId>
-  <version>1.0.0</version>
+  <version>1.0.1</version>
   <packaging>jar</packaging>
   <name>form2db-app Magnolia Module</name>  
   <description>With this app you can save your form data in a generic app and export it to excel.</description>
@@ -15,9 +15,9 @@
   </organization>
   
   <properties>
-    <magnoliaVersion>5.2.4</magnoliaVersion>
+    <magnoliaVersion>5.3</magnoliaVersion>
     <javaVersion>1.7</javaVersion>
-    <magnoliaSTKVersion>2.7.4</magnoliaSTKVersion> 
+    <magnoliaSTKVersion>2.8</magnoliaSTKVersion> 
   </properties>
   
   <licenses>

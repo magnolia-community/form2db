@@ -12,6 +12,7 @@ import info.magnolia.module.form.processors.FormProcessorFailedException;
 
 import java.io.FileInputStream;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -60,6 +61,8 @@ public class Form2dbProcessor extends AbstractFormProcessor {
 						PropertyUtil.setProperty(newForm, key, parameters.get(key));
 					}
 					
+					PropertyUtil.setProperty(newForm, "created", new Date());
+					
 					if (getAttachments() != null) {
 						
 						for (Map.Entry<String, Document> attachment : getAttachments().entrySet()) {
@@ -88,6 +91,8 @@ public class Form2dbProcessor extends AbstractFormProcessor {
 					for (String key : parameters.keySet()) {
 						PropertyUtil.setProperty(entry, key, parameters.get(key));
 					}
+					
+					PropertyUtil.setProperty(entry, "created", new Date());
 
 					if (getAttachments() != null) {
 						

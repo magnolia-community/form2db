@@ -4,33 +4,18 @@ import info.magnolia.cms.beans.config.MIMEMapping;
 import info.magnolia.cms.beans.runtime.Document;
 import info.magnolia.cms.beans.runtime.MultipartForm;
 import info.magnolia.context.MgnlContext;
-import info.magnolia.jcr.util.NodeUtil;
 import info.magnolia.jcr.util.PropertyUtil;
 import info.magnolia.jcr.util.SessionUtil;
 import info.magnolia.module.form.processors.AbstractFormProcessor;
 import info.magnolia.module.form.processors.FormProcessorFailedException;
 
 import java.io.FileInputStream;
-import java.util.ArrayList;
 import java.util.Date;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
-import java.util.Set;
-import java.util.Map.Entry; 
 
-import javax.jcr.ItemExistsException;
 import javax.jcr.Node;
 import javax.jcr.NodeIterator;
-import javax.jcr.PathNotFoundException;
-import javax.jcr.RepositoryException;
-import javax.jcr.Session;
-import javax.jcr.lock.LockException;
-import javax.jcr.nodetype.ConstraintViolationException;
-import javax.jcr.nodetype.NoSuchNodeTypeException;
-import javax.jcr.version.VersionException;
 
-import org.apache.poi.ss.usermodel.Row;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -67,11 +52,14 @@ public class Form2dbProcessor extends AbstractFormProcessor {
 						
 						for (Map.Entry<String, Document> attachment : getAttachments().entrySet()) {
 							//create the file node - see section 6.7.22.6 of the spec
-					        Node fileNode = newForm.addNode (attachment.getValue().getFile().getName(), "nt:file");
+					        String filename = attachment.getValue().getFile().getName();
+					        Node fileNode = newForm.addNode (filename, "nt:file");
 					        //create the mandatory child node - jcr:content
 					        Node resNode = fileNode.addNode ("jcr:content", "nt:resource");			
 					        String mimeType = MIMEMapping.getMIMETypeOrDefault(attachment.getValue().getExtension());					        
 					        PropertyUtil.setProperty(resNode, "jcr:data", new FileInputStream (attachment.getValue().getFile()));
+					        PropertyUtil.setProperty(resNode, "fileName", filename);
+					        PropertyUtil.setProperty(resNode, "extension", filename.split("\\.(?=[^\\.]+$)")[1]);
 					        PropertyUtil.setProperty(resNode, "jcr:mimeType", mimeType);
 						}
 						
@@ -98,11 +86,14 @@ public class Form2dbProcessor extends AbstractFormProcessor {
 						
 						for (Map.Entry<String, Document> attachment : getAttachments().entrySet()) {
 							//create the file node - see section 6.7.22.6 of the spec
-					        Node fileNode = entry.addNode (attachment.getValue().getFile().getName(), "nt:file");
+					        String filename = attachment.getValue().getFile().getName();
+					        Node fileNode = entry.addNode (filename, "mgnl:asset");
 					        //create the mandatory child node - jcr:content
-					        Node resNode = fileNode.addNode ("jcr:content", "nt:resource");			
-					        String mimeType = MIMEMapping.getMIMETypeOrDefault(attachment.getValue().getExtension());					        
+					        Node resNode = fileNode.addNode ("jcr:content", "mgnl:resource");			
+					        String mimeType = MIMEMapping.getMIMETypeOrDefault(attachment.getValue().getExtension());	
 					        PropertyUtil.setProperty(resNode, "jcr:data", new FileInputStream (attachment.getValue().getFile()));
+					        PropertyUtil.setProperty(resNode, "fileName", filename);
+					        PropertyUtil.setProperty(resNode, "extension", filename.split("\\.(?=[^\\.]+$)")[1]);
 					        PropertyUtil.setProperty(resNode, "jcr:mimeType", mimeType);
 						}
 						

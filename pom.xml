@@ -4,7 +4,7 @@
     
   <groupId>de.marvinkerkhoff</groupId>
   <artifactId>form2db-app</artifactId>
-  <version>1.0.1</version>
+  <version>1.0.2</version>
   <packaging>jar</packaging>
   <name>form2db-app Magnolia Module</name>  
   <description>With this app you can save your form data in a generic app and export it to excel.</description>
@@ -114,7 +114,7 @@
   <repositories>
     <repository>
       <id>magnolia.public</id>
-      <url>http://nexus.magnolia-cms.com/content/groups/public</url>
+      <url>https://nexus.magnolia-cms.com/content/groups/public</url>
       <snapshots>
       </snapshots>
     </repository>
@@ -127,15 +127,15 @@
   <distributionManagement>
   <repository>
     <id>magnolia.forge.releases</id>
-    <url>http://nexus.magnolia-cms.com/content/repositories/magnolia.forge.releases</url>
+    <url>https://nexus.magnolia-cms.com/content/repositories/magnolia.forge.releases</url>
   </repository>
   <snapshotRepository>
     <id>magnolia.forge.snapshots</id>
-    <url>http://nexus.magnolia-cms.com/content/repositories/magnolia.forge.snapshots</url>
+    <url>https://nexus.magnolia-cms.com/content/repositories/magnolia.forge.snapshots</url>
   </snapshotRepository>
   <site>
     <id>magnolia.forge.sites</id>
-    <url>dav:http://nexus.magnolia-cms.com/content/sites/magnolia.forge.sites/${artifactId}/${project.version}</url>
+    <url>dav:https://nexus.magnolia-cms.com/content/sites/magnolia.forge.sites/${artifactId}/${project.version}</url>
   </site>
   </distributionManagement>
   

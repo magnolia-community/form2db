@@ -96,6 +96,27 @@
       <propertyDefinition name="*" requiredType="undefined" autoCreated="false" mandatory="false" onParentVersion="COPY" protected="false" multiple="false"/>
       <propertyDefinition name="*" requiredType="undefined" autoCreated="false" mandatory="false" onParentVersion="COPY" protected="false" multiple="true"/>
     </nodeType>
+	
+	<nodeType name="mgnl:asset" isMixin="false" hasOrderableChildNodes="true" primaryItemName="">
+		<supertypes>
+			<supertype>nt:hierarchyNode</supertype>
+			<supertype>mix:referenceable</supertype>
+			<supertype>mgnl:created</supertype>
+			<supertype>mgnl:lastModified</supertype>
+			<supertype>mgnl:activatable</supertype>
+			<supertype>mgnl:versionable</supertype>
+		</supertypes>
+		<!--  This allows us to add any property to the node. -->
+		<propertyDefinition name="master" requiredType="WeakReference" autoCreated="false" mandatory="false" onParentVersion="COPY" protected="false" multiple="false" isFullTextSearchable="false" isQueryOrderable="false"/>
+		<propertyDefinition name="*" requiredType="undefined" autoCreated="false" mandatory="false" onParentVersion="COPY" protected="false" multiple="false" isFullTextSearchable="false" isQueryOrderable="false"/>
+		<propertyDefinition name="*" requiredType="undefined" autoCreated="false" mandatory="false" onParentVersion="COPY" protected="false" multiple="true" isFullTextSearchable="false" isQueryOrderable="false"/>
+		<childNodeDefinition name="*" autoCreated="false" mandatory="false" onParentVersion="COPY" protected="false" defaultPrimaryType="" sameNameSiblings="true">
+		
+			<requiredPrimaryTypes>
+				<requiredPrimaryType>nt:base</requiredPrimaryType>
+			</requiredPrimaryTypes>
+		</childNodeDefinition>
+	</nodeType>
 
 </nodeTypes>
 

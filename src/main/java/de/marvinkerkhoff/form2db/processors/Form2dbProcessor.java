@@ -53,7 +53,7 @@ public class Form2dbProcessor extends AbstractFormProcessor {
 						for (Map.Entry<String, Document> attachment : getAttachments().entrySet()) {
 							//create the file node - see section 6.7.22.6 of the spec
 					        String filename = attachment.getValue().getFile().getName();
-					        Node fileNode = newForm.addNode (filename, "nt:file");
+					        Node fileNode = newForm.addNode (filename, "mgnl:asset");
 					        //create the mandatory child node - jcr:content
 					        Node resNode = fileNode.addNode ("jcr:content", "nt:resource");			
 					        String mimeType = MIMEMapping.getMIMETypeOrDefault(attachment.getValue().getExtension());					        

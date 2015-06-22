@@ -13,8 +13,17 @@ import java.io.FileInputStream;
 import java.util.Date;
 import java.util.Map;
 
+import javax.jcr.AccessDeniedException;
+import javax.jcr.InvalidItemStateException;
+import javax.jcr.ItemExistsException;
 import javax.jcr.Node;
 import javax.jcr.NodeIterator;
+import javax.jcr.ReferentialIntegrityException;
+import javax.jcr.RepositoryException;
+import javax.jcr.lock.LockException;
+import javax.jcr.nodetype.ConstraintViolationException;
+import javax.jcr.nodetype.NoSuchNodeTypeException;
+import javax.jcr.version.VersionException;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -31,9 +40,10 @@ public class Form2dbProcessor extends AbstractFormProcessor {
 		if (formName == null) {
 			log.error("please add a formName to save your data");
 		} else {
+			Node existingPage = null;
 			try {
 								
-				Node existingPage = SessionUtil.getNode("form2db", "/"+content.getAncestor(1).getName());
+				existingPage = SessionUtil.getNode("form2db", "/"+content.getAncestor(1).getName());
 				if (existingPage == null) {
 					existingPage = SessionUtil.getNode("form2db", "/").addNode(content.getAncestor(1).getName(), "mgnl:folder");
 				}
@@ -55,7 +65,7 @@ public class Form2dbProcessor extends AbstractFormProcessor {
 					        String filename = attachment.getValue().getFile().getName();
 					        Node fileNode = newForm.addNode (filename, "mgnl:asset");
 					        //create the mandatory child node - jcr:content
-					        Node resNode = fileNode.addNode ("jcr:content", "nt:resource");			
+					        Node resNode = fileNode.addNode ("jcr:content", "mgnl:resource");			
 					        String mimeType = MIMEMapping.getMIMETypeOrDefault(attachment.getValue().getExtension());					        
 					        PropertyUtil.setProperty(resNode, "jcr:data", new FileInputStream (attachment.getValue().getFile()));
 					        PropertyUtil.setProperty(resNode, "fileName", filename);
@@ -102,7 +112,18 @@ public class Form2dbProcessor extends AbstractFormProcessor {
 				
 				existingPage.getSession().save();
 			} catch (Exception e) {
-						
+				log.error("The form could not be saved in the form2db repository. Check your rights! ");
+				e.printStackTrace();
+			} finally {
+				if (existingPage instanceof Node) {				    
+					try {
+						existingPage.getSession().save();
+					} catch (AccessDeniedException e) {
+						log.error("The form could not be saved in the form2db repository. Check your rights! ");
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+				}
 			}
 		}
 		

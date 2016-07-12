@@ -24,7 +24,7 @@ import de.marvinkerkhoff.form2db.excel.ExcelCreater;
 
 /**
  * Exports deadlink-reports to excel.
- * 
+ *
  * @author marvink2
  */
 @SuppressWarnings("serial")
@@ -50,7 +50,7 @@ public class ExcelExportAction extends AbstractAction<ExcelExportActionDefinitio
     }
 
     protected void openFileInBlankWindow(String fileName, String mimeType) {
-        
+
         StreamResource.StreamSource source = new StreamResource.StreamSource() {
             public InputStream getStream() {
                 try {
@@ -65,7 +65,7 @@ public class ExcelExportAction extends AbstractAction<ExcelExportActionDefinitio
         resource.getStream().setParameter("Content-Disposition", "attachment; filename=" + fileName + "\"");
         resource.setMIMEType(mimeType);
         resource.setCacheTime(0);
-          
+
         Page.getCurrent().open(resource, "", true);
     }
 

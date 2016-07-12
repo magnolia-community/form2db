@@ -1,7 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
   <modelVersion>4.0.0</modelVersion>
-
+  <parent>
+    <groupId>info.magnolia.maven.poms-forge</groupId>
+    <artifactId>magnolia-parent-pom-forge</artifactId>
+    <version>31</version>
+  </parent>
   <groupId>de.marvinkerkhoff</groupId>
   <artifactId>form2db-app</artifactId>
   <version>1.0.7</version>
@@ -62,6 +66,12 @@
       <groupId>org.apache.poi</groupId>
       <artifactId>poi-ooxml</artifactId>
       <version>3.9</version>
+      <exclusions>
+        <exclusion>
+          <groupId>xml-apis</groupId>
+          <artifactId>xml-apis</artifactId>
+        </exclusion>
+      </exclusions>
     </dependency>
 
     <dependency>
@@ -80,64 +90,12 @@
     </dependency>
   </dependencies>
 
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <version>2.3.2</version>
-        <configuration>
-          <source>${javaVersion}</source>
-          <target>${javaVersion}</target>
-        </configuration>
-      </plugin>
-    </plugins>
-
-    <!-- default resources configuration which will filter the module descriptor -->
-    <resources>
-      <resource>
-        <directory>src/main/resources</directory>
-        <includes>
-          <include>**/*</include>
-        </includes>
-      </resource>
-      <resource>
-        <filtering>true</filtering>
-        <directory>src/main/resources</directory>
-        <includes>
-          <include>META-INF/magnolia/*</include>
-        </includes>
-      </resource>
-    </resources>
-  </build>
-
   <repositories>
-    <repository>
-      <id>magnolia.public</id>
-      <url>https://nexus.magnolia-cms.com/content/groups/public</url>
-      <snapshots>
-      </snapshots>
-    </repository>
     <repository>
       <id>vaadin-addons</id>
       <url>http://maven.vaadin.com/vaadin-addons</url>
     </repository>
   </repositories>
-
-  <distributionManagement>
-    <repository>
-      <id>magnolia.forge.releases</id>
-      <url>https://nexus.magnolia-cms.com/content/repositories/magnolia.forge.releases</url>
-    </repository>
-    <snapshotRepository>
-      <id>magnolia.forge.snapshots</id>
-      <url>https://nexus.magnolia-cms.com/content/repositories/magnolia.forge.snapshots</url>
-    </snapshotRepository>
-    <site>
-      <id>magnolia.forge.sites</id>
-      <url>dav:https://nexus.magnolia-cms.com/content/sites/magnolia.forge.sites/${artifactId}/${project.version}</url>
-    </site>
-  </distributionManagement>
 
   <scm>
     <connection>scm:git:http://git.magnolia-cms.com/forge/form2db-app.git</connection>
@@ -145,5 +103,4 @@
     <url>http://git.magnolia-cms.com/gitweb/?p=forge/form2db-app.git</url>
     <tag>HEAD</tag>
   </scm>
-
 </project>

@@ -71,6 +71,7 @@ public class Form2dbProcessor extends AbstractFormProcessor {
 					        PropertyUtil.setProperty(resNode, "fileName", filename);
 					        PropertyUtil.setProperty(resNode, "extension", filename.split("\\.(?=[^\\.]+$)")[1]);
 					        PropertyUtil.setProperty(resNode, "jcr:mimeType", mimeType);
+					        PropertyUtil.setProperty(resNode, "size", attachment.getValue().getFile().length());
 						}
 						
 					}									
@@ -105,6 +106,7 @@ public class Form2dbProcessor extends AbstractFormProcessor {
 					        PropertyUtil.setProperty(resNode, "fileName", filename);
 					        PropertyUtil.setProperty(resNode, "extension", filename.split("\\.(?=[^\\.]+$)")[1]);
 					        PropertyUtil.setProperty(resNode, "jcr:mimeType", mimeType);
+					        PropertyUtil.setProperty(resNode, "size", attachment.getValue().getFile().length());
 						}
 						
 					}

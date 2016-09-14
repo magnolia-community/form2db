@@ -1,40 +1,39 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE module SYSTEM "module.dtd" >
 <module>
-    <name>form2db-app</name>
-    <displayName>${project.name}</displayName>
-    <description>${project.description}</description>
-    <class>de.marvinkerkhoff.form2db.Form2db</class>
-    <versionHandler>de.marvinkerkhoff.form2db.setup.Form2dbVersionHandler</versionHandler>
-    <version>${project.version}</version>
+  <name>form2db-app</name>
+  <displayName>${project.name}</displayName>
+  <description>${project.description}</description>
+  <versionHandler>de.marvinkerkhoff.form2db.setup.Form2dbVersionHandler</versionHandler>
+  <version>${project.version}</version>
 
-    <components>
-        <id>app-form2db</id>
-    </components>
+  <components>
+    <id>app-form2db</id>
+  </components>
 
-    <dependencies>
-        <dependency>
-            <name>core</name>
-            <version>5.2/*</version>
-        </dependency>
-        <dependency>
-            <name>ui-admincentral</name>
-            <version>5.2/*</version>
-        </dependency>
-        <dependency>
-            <name>form</name>
-            <version>2.3/*</version>
-        </dependency>
-    </dependencies>
+  <dependencies>
+    <dependency>
+      <name>core</name>
+      <version>5.2/*</version>
+    </dependency>
+    <dependency>
+      <name>ui-admincentral</name>
+      <version>5.2/*</version>
+    </dependency>
+    <dependency>
+      <name>standard-templating-kit</name>
+      <version>2/*</version>
+    </dependency>
+  </dependencies>
 
-    <repositories>
-        <repository>
-            <name>magnolia</name>
-            <workspaces>
-                <workspace>form2db</workspace>
-            </workspaces>
-            <nodeTypeFile>/mgnl-nodetypes/form2db-nodetypes.xml</nodeTypeFile>
-        </repository>
-    </repositories>
+  <repositories>
+    <repository>
+      <name>magnolia</name>
+      <workspaces>
+        <workspace>form2db</workspace>
+      </workspaces>
+      <nodeTypeFile>/mgnl-nodetypes/form2db-nodetypes.xml</nodeTypeFile>
+    </repository>
+  </repositories>
 
 </module>

@@ -15,7 +15,7 @@ import org.slf4j.LoggerFactory;
 
 /**
  * Displays the current selected report.
- * 
+ *
  * @author marvink2
  */
 public class ShowDetailBrowserAction extends AbstractAction<ShowDetailBrowserActionDefinition> {
@@ -33,7 +33,7 @@ public class ShowDetailBrowserAction extends AbstractAction<ShowDetailBrowserAct
         this.locationController = locationController;
         this.contentConnector = contentConnector;
     }
-    
+
     @Override
     public void execute() throws ActionExecutionException {
         try {

@@ -22,8 +22,8 @@
             <version>5.2/*</version>
         </dependency>
         <dependency>
-            <name>standard-templating-kit</name>
-      		<version>2/*</version>
+            <name>form</name>
+            <version>2.3/*</version>
         </dependency>
     </dependencies>
 

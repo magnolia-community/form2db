@@ -21,9 +21,12 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
+/**
+ * Creates an excel file.
+ */
 public class ExcelCreater {
 
-	final private File file = File.createTempFile("excel-form2db", ".xlsx", Path.getTempDirectory());
+    final private File file = File.createTempFile("excel-form2db", ".xlsx", Path.getTempDirectory());
     private FileOutputStream out = new FileOutputStream(file);
 
     public ExcelCreater(Node rootnode) throws Exception {
@@ -37,11 +40,11 @@ public class ExcelCreater {
         sheet.setHorizontallyCenter(true);
         PrintSetup printSetup = sheet.getPrintSetup();
         printSetup.setLandscape(true);
-        
+
         if (rootnode.getPrimaryNodeType().getName().equals("mgnl:formNode")) {
-        	sheet = getAllFormEntrys(sheet,rootnode);
+            sheet = getAllFormEntrys(sheet, rootnode);
         } else {
-        	sheet = getSingleFormEntry(sheet,rootnode);
+            sheet = getSingleFormEntry(sheet, rootnode);
         }
 
         wb.write(out);
@@ -51,68 +54,68 @@ public class ExcelCreater {
     public File getFile() {
         return file;
     }
-    
+
     private Sheet getAllFormEntrys(Sheet sheet, Node rootnode) throws ValueFormatException, RepositoryException {
-    	NodeIterator propitr = rootnode.getNodes();
-        
+        NodeIterator propitr = rootnode.getNodes();
+
         Set<String> propertynames = new HashSet<String>();
-        
+
         while (propitr.hasNext()) {
-        	PropertyIterator entrys = ((Node) propitr.next()).getProperties();
-        	while(entrys.hasNext()) {  
-            	Property prop = (Property) entrys.next();
-            	if (!prop.getName().contains("jcr:")) {
-                	propertynames.add(prop.getName());
-            	}
+            PropertyIterator entrys = ((Node) propitr.next()).getProperties();
+            while (entrys.hasNext()) {
+                Property prop = (Property) entrys.next();
+                if (!prop.getName().contains("jcr:")) {
+                    propertynames.add(prop.getName());
+                }
             }
         }
-        
+
         int count = 0;
         Row row = sheet.createRow(count);
         NodeIterator itr = rootnode.getNodes();
-        
-        int propCount = 0;   
-        for(String propertyname : propertynames) { 
-        	row.createCell(propCount).setCellValue(propertyname);
-        	
-        	propCount++;
+
+        int propCount = 0;
+        for (String propertyname : propertynames) {
+            row.createCell(propCount).setCellValue(propertyname);
+
+            propCount++;
         }
-        
+
         while (itr.hasNext()) {
             Node entry = (Node) itr.next();
             count++;
             row = sheet.createRow(count);
-                                    
-            propCount = 0;   
-            
-            for(String propertyname : propertynames) { 
-            	if (entry.hasProperty(propertyname)) {
-            		row.createCell(propCount).setCellValue(entry.getProperty(propertyname).getString());
-            	}	
-            	propCount++;
+
+            propCount = 0;
+
+            for (String propertyname : propertynames) {
+                if (entry.hasProperty(propertyname)) {
+                    row.createCell(propCount).setCellValue(entry.getProperty(propertyname).getString());
+                }
+                propCount++;
             }
 
         }
-		return sheet;    	
+        return sheet;
     }
-    
-    private Sheet getSingleFormEntry (Sheet sheet, Node rootnode) throws RepositoryException {
-    	int count = 0;
-    	Row row = sheet.createRow(count);
-        
+
+    private Sheet getSingleFormEntry(Sheet sheet, Node rootnode) throws RepositoryException {
+        int count = 0;
+        Row row = sheet.createRow(count);
+
         PropertyIterator entrys = rootnode.getProperties();
-        
-        int propCount = 0;           
-        
-        while(entrys.hasNext()) {            	
-        	Property prop = (Property) entrys.next();
-        	if (!prop.getName().contains("jcr:")) {
-        		row.createCell(propCount).setCellValue(prop.getString());
-            	propCount++;
-        	}
+
+        int propCount = 0;
+
+        while (entrys.hasNext()) {
+            Property prop = (Property) entrys.next();
+            if (!prop.getName().contains("jcr:")) {
+                row.createCell(propCount).setCellValue(prop.getString());
+                propCount++;
+            }
         }
         count++;
-        return sheet;    	
+        return sheet;
     }
-    
+
 }

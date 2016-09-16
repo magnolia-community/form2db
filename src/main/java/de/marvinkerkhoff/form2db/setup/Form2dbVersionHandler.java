@@ -13,17 +13,13 @@ import info.magnolia.module.delta.DeltaBuilder;
 public class Form2dbVersionHandler extends DefaultModuleVersionHandler {
 
     public Form2dbVersionHandler() {
-       
-    	register(DeltaBuilder.update("1.0.1", "")
 
-    			.addTask(new BootstrapSingleResource("Reinstall app config", "Bootstrap app config", "/mgnl-bootstrap/form2db-app/config.modules.form2db-app.apps.form2db.xml"))
-
+        register(DeltaBuilder.update("1.0.1", "")
+                .addTask(new BootstrapSingleResource("Reinstall app config", "Bootstrap app config", "/mgnl-bootstrap/form2db-app/config.modules.form2db-app.apps.form2db.xml"))
         );
-    	
-    	register(DeltaBuilder.update("1.0.2", "")
 
-    			.addTask(new BootstrapSingleResource("Reinstall app config", "Bootstrap app config", "/mgnl-bootstrap/form2db-app/config.modules.form2db-app.apps.form2db.xml"))
-
+        register(DeltaBuilder.update("1.0.2", "")
+                .addTask(new BootstrapSingleResource("Reinstall app config", "Bootstrap app config", "/mgnl-bootstrap/form2db-app/config.modules.form2db-app.apps.form2db.xml"))
         );
 
     }

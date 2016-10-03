@@ -8,7 +8,7 @@
   </parent>
   <groupId>de.marvinkerkhoff</groupId>
   <artifactId>form2db-app</artifactId>
-  <version>1.1.1-SNAPSHOT</version>
+  <version>1.1.2-SNAPSHOT</version>
   <packaging>jar</packaging>
   <name>form2db-app Magnolia Module</name>
   <description>With this app you can save your form data in a generic app and export it to excel.</description>

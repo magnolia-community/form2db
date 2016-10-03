@@ -84,7 +84,7 @@
         <sv:value>2012-10-23T10:05:26.984+02:00</sv:value>
       </sv:property>
       <sv:property sv:name="mgnl:lastModified" sv:type="Date">
-        <sv:value>2014-05-09T20:30:52.202+02:00</sv:value>
+        <sv:value>2016-10-03T14:20:16.306+02:00</sv:value>
       </sv:property>
       <sv:property sv:name="mgnl:lastModifiedBy" sv:type="String">
         <sv:value>superuser</sv:value>
@@ -3324,6 +3324,38 @@
             </sv:property>
           </sv:node>
         </sv:node>
+      </sv:node>
+      <sv:node sv:name="imageProvider">
+        <sv:property sv:name="jcr:primaryType" sv:type="Name">
+          <sv:value>mgnl:contentNode</sv:value>
+        </sv:property>
+        <sv:property sv:name="jcr:uuid" sv:type="String">
+          <sv:value>42ecd00b-1803-4808-9727-f82d6f596169</sv:value>
+        </sv:property>
+        <sv:property sv:name="class" sv:type="String">
+          <sv:value>info.magnolia.ui.imageprovider.definition.ConfiguredImageProviderDefinition</sv:value>
+        </sv:property>
+        <sv:property sv:name="imageProviderClass" sv:type="String">
+          <sv:value>info.magnolia.ui.imageprovider.DefaultImageProvider</sv:value>
+        </sv:property>
+        <sv:property sv:name="jcr:createdBy" sv:type="String">
+          <sv:value>admin</sv:value>
+        </sv:property>
+        <sv:property sv:name="mgnl:created" sv:type="Date">
+          <sv:value>2016-10-03T14:20:16.306+02:00</sv:value>
+        </sv:property>
+        <sv:property sv:name="mgnl:createdBy" sv:type="String">
+          <sv:value>superuser</sv:value>
+        </sv:property>
+        <sv:property sv:name="mgnl:lastModified" sv:type="Date">
+          <sv:value>2016-10-03T14:20:58.655+02:00</sv:value>
+        </sv:property>
+        <sv:property sv:name="mgnl:lastModifiedBy" sv:type="String">
+          <sv:value>superuser</sv:value>
+        </sv:property>
+        <sv:property sv:name="originalImageNodeName" sv:type="String">
+          <sv:value>jcr:content</sv:value>
+        </sv:property>
       </sv:node>
     </sv:node>
     <sv:node sv:name="detailAsset">

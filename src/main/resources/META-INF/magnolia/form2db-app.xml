@@ -14,16 +14,12 @@
 
     <dependencies>
         <dependency>
-            <name>core</name>
-            <version>${magnoliaVersion}/*</version>
-        </dependency>
-        <dependency>
             <name>ui-admincentral</name>
             <version>${magnoliaVersion}/*</version>
         </dependency>
         <dependency>
             <name>dam-jcr</name>
-            <version>2.1/*</version>
+            <version>${magnolia.dam.version}/*</version>
         </dependency>
         <dependency>
             <name>form</name>

@@ -42,6 +42,9 @@ import org.slf4j.LoggerFactory;
  */
 public class Form2db implements ModuleLifecycle {
     private static final Logger LOGGER = LoggerFactory.getLogger(Form2db.class);
+    public static final String WORKSPACE = "form2db";
+    public static final String NT_FORM = "mgnl:formNode";
+    public static final String NT_FORM_ENTRY = "mgnl:formEntryNode";
 
     @Override
     public void start(final ModuleLifecycleContext moduleLifecycleContext) {

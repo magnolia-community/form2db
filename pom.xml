@@ -105,6 +105,13 @@
         </repository>
     </repositories>
 
+    <pluginRepositories>
+        <pluginRepository>
+            <id>aperto.nexus.magnolia</id>
+            <url>https://maven.aperto.de/nexus/content/groups/magnolia/</url>
+        </pluginRepository>
+    </pluginRepositories>
+
     <scm>
         <connection>scm:git:http://git.magnolia-cms.com/forge/form2db-app.git</connection>
         <developerConnection>scm:git:https://git.magnolia-cms.com/forge/form2db-app.git</developerConnection>

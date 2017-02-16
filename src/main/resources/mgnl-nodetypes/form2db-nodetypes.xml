@@ -1,46 +1,14 @@
-<nodeTypes
-	xmlns:rep="internal"
-	xmlns:nt="http://www.jcp.org/jcr/nt/1.0"
-	xmlns:mix="http://www.jcp.org/jcr/mix/1.0"
-	xmlns:mgnl="http://www.magnolia.info/jcr/mgnl"
-	xmlns:jcr="http://www.jcp.org/jcr/1.0">
+<?xml version="1.0" encoding="UTF-8"?>
+<nodeTypes xmlns:mgnl="http://www.magnolia.info/jcr/mgnl">
+    <nodeType name="mgnl:formNode" isMixin="false" hasOrderableChildNodes="true" primaryItemName="">
+        <supertypes>
+            <supertype>mgnl:content</supertype>
+        </supertypes>
+    </nodeType>
 
-	<nodeType name="mgnl:folder" isMixin="false" hasOrderableChildNodes="true" primaryItemName="">
-		<supertypes>
-			<supertype>mgnl:content</supertype>
-		</supertypes>
-	</nodeType>
-		
-	<nodeType name="mgnl:formNode" isMixin="false" hasOrderableChildNodes="true" primaryItemName="">
-		<supertypes>
-			<supertype>mgnl:content</supertype>
-		</supertypes>
-	</nodeType>
-	
-	<nodeType name="mgnl:formEntryNode" isMixin="false" hasOrderableChildNodes="true" primaryItemName="">
-		<supertypes>
-			<supertype>mgnl:content</supertype>
-		</supertypes>
-	</nodeType>
-	
-	<nodeType name="mgnl:asset" isMixin="false" hasOrderableChildNodes="true" primaryItemName="">
-		<supertypes>
-			<supertype>nt:hierarchyNode</supertype>
-			<supertype>mix:referenceable</supertype>
-			<supertype>mgnl:created</supertype>
-			<supertype>mgnl:lastModified</supertype>
-			<supertype>mgnl:activatable</supertype>
-			<supertype>mgnl:versionable</supertype>
-		</supertypes>
-		<!--  This allows us to add any property to the node. -->
-		<propertyDefinition name="master" requiredType="WeakReference" autoCreated="false" mandatory="false" onParentVersion="COPY" protected="false" multiple="false" isFullTextSearchable="false" isQueryOrderable="false"/>
-		<propertyDefinition name="*" requiredType="undefined" autoCreated="false" mandatory="false" onParentVersion="COPY" protected="false" multiple="false" isFullTextSearchable="false" isQueryOrderable="false"/>
-		<propertyDefinition name="*" requiredType="undefined" autoCreated="false" mandatory="false" onParentVersion="COPY" protected="false" multiple="true" isFullTextSearchable="false" isQueryOrderable="false"/>
-		<childNodeDefinition name="*" autoCreated="false" mandatory="false" onParentVersion="COPY" protected="false" defaultPrimaryType="" sameNameSiblings="true">
-		
-			<requiredPrimaryTypes>
-				<requiredPrimaryType>nt:base</requiredPrimaryType>
-			</requiredPrimaryTypes>
-		</childNodeDefinition>
-	</nodeType>
+    <nodeType name="mgnl:formEntryNode" isMixin="false" hasOrderableChildNodes="true" primaryItemName="">
+        <supertypes>
+            <supertype>mgnl:content</supertype>
+        </supertypes>
+    </nodeType>
 </nodeTypes>

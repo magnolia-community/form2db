@@ -9,6 +9,9 @@
   <sv:property sv:name="class" sv:type="String">
     <sv:value>de.marvinkerkhoff.form2db.processors.Form2dbProcessor</sv:value>
   </sv:property>
+  <sv:property sv:name="enabled" sv:type="Boolean">
+    <sv:value>true</sv:value>
+  </sv:property>
   <sv:property sv:name="jcr:createdBy" sv:type="String">
     <sv:value>admin</sv:value>
   </sv:property>

@@ -101,13 +101,15 @@ public class Form2dbProcessor extends AbstractFormProcessor {
     private void storeFields(final Node entry, final Map<String, Object> parameters) throws RepositoryException {
         for (String key : parameters.keySet()) {
             Object value = parameters.get(key);
-            String propertyValue;
-            if (value.getClass().isArray()) {
-                propertyValue = join((Object[]) value, ",");
-            } else {
-                propertyValue = value.toString();
+            if (value != null) {
+                String propertyValue;
+                if (value.getClass().isArray()) {
+                    propertyValue = join((Object[]) value, ",");
+                } else {
+                    propertyValue = value.toString();
+                }
+                entry.setProperty(key, propertyValue);
             }
-            entry.setProperty(key, propertyValue);
         }
     }
 

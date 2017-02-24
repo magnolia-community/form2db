@@ -41,6 +41,7 @@ public class Form2dbProcessor extends AbstractFormProcessor {
     private static final Logger LOGGER = LoggerFactory.getLogger(Form2dbProcessor.class);
 
     private TemplatingFunctions templatingFunctions;
+    private Form2db form2db;
 
     @Override
     protected void internalProcess(Node componentNode, Map<String, Object> parameters) throws FormProcessorFailedException {
@@ -119,11 +120,17 @@ public class Form2dbProcessor extends AbstractFormProcessor {
             public String exec() throws RepositoryException {
                 Node formNode = null;
                 Session jcrSession = MgnlContext.getJCRSession(Form2db.WORKSPACE);
-                Node pageNode = createPath(jcrSession.getRootNode(), removeStart(pagePath, "/"), NodeTypes.Folder.NAME, true);
+
+                String basePath = removeStart(pagePath, "/");
+                if (useFlatStructure()) {
+                    basePath = substringBefore(basePath, "/");
+                }
+
+                Node pageNode = createPath(jcrSession.getRootNode(), basePath, NodeTypes.Folder.NAME, true);
                 if (pageNode != null) {
                     formNode = createPath(pageNode, getValidatedLabel(formName), NT_FORM, true);
                 }
-                return (formNode != null) ? formNode.getPath() : null;
+                return formNode != null ? formNode.getPath() : null;
             }
         });
     }
@@ -142,5 +149,12 @@ public class Form2dbProcessor extends AbstractFormProcessor {
             templatingFunctions = Components.getComponent(TemplatingFunctions.class);
         }
         return templatingFunctions;
+    }
+
+    private boolean useFlatStructure() {
+        if (form2db == null) {
+            form2db = Components.getComponent(Form2db.class);
+        }
+        return form2db.isFlatStructure();
     }
 }

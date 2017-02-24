@@ -46,6 +46,16 @@ public class Form2db implements ModuleLifecycle {
     public static final String NT_FORM = "mgnl:formNode";
     public static final String NT_FORM_ENTRY = "mgnl:formEntryNode";
 
+    private boolean flatStructure = true;
+
+    public boolean isFlatStructure() {
+        return flatStructure;
+    }
+
+    public void setFlatStructure(final boolean flatStructure) {
+        this.flatStructure = flatStructure;
+    }
+
     @Override
     public void start(final ModuleLifecycleContext moduleLifecycleContext) {
         LOGGER.info("Start form2db module ...");

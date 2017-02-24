@@ -28,6 +28,7 @@ import static de.marvinkerkhoff.form2db.Form2db.NT_FORM_ENTRY;
 import static info.magnolia.cms.beans.config.MIMEMapping.getMIMETypeOrDefault;
 import static info.magnolia.cms.core.Path.getUniqueLabel;
 import static info.magnolia.cms.core.Path.getValidatedLabel;
+import static info.magnolia.context.MgnlContext.doInSystemContext;
 import static info.magnolia.jcr.util.NodeUtil.createPath;
 import static info.magnolia.jcr.util.PropertyUtil.*;
 import static java.text.DateFormat.MEDIUM;
@@ -44,7 +45,8 @@ public class Form2dbProcessor extends AbstractFormProcessor {
     private Form2db form2db;
 
     @Override
-    protected void internalProcess(Node componentNode, Map<String, Object> parameters) throws FormProcessorFailedException {
+    protected void internalProcess(Node componentNode, Map<String, Object> parameters)
+        throws FormProcessorFailedException {
         try {
             boolean saveToJcr = getBoolean(componentNode, "saveToJcr", false);
             Node page = getTemplatingFunctions().page(componentNode);
@@ -62,8 +64,8 @@ public class Form2dbProcessor extends AbstractFormProcessor {
     }
 
     private void createFormEntry(final Map<String, Object> parameters, final String formNodePath) throws RepositoryException {
-        final Map<String, Document> attachments = getAttachments();
-        MgnlContext.doInSystemContext(new MgnlContext.Op<Boolean, RepositoryException>() {
+        final Map<String, Document> docs = getAttachments();
+        doInSystemContext(new MgnlContext.Op<Boolean, RepositoryException>() {
             @Override
             public Boolean exec() throws RepositoryException {
                 Session jcrSession = MgnlContext.getJCRSession(Form2db.WORKSPACE);
@@ -74,16 +76,16 @@ public class Form2dbProcessor extends AbstractFormProcessor {
                 Node entry = formNode.addNode(entryName, NT_FORM_ENTRY);
                 setProperty(entry, "created", now);
                 storeFields(entry, parameters);
-                storeAttachments(entry, attachments);
+                storeAttachments(entry, docs);
                 jcrSession.save();
                 return true;
             }
         });
     }
 
-    private void storeAttachments(final Node entry, final Map<String, Document> attachments) throws RepositoryException {
-        if (attachments != null) {
-            for (Map.Entry<String, Document> attachment : attachments.entrySet()) {
+    private void storeAttachments(final Node entry, Map<String, Document> docs) throws RepositoryException {
+        if (docs != null) {
+            for (Map.Entry<String, Document> attachment : docs.entrySet()) {
                 try {
                     String filename = attachment.getValue().getFile().getName();
                     Node fileNode = entry.addNode(filename, Asset.NAME);

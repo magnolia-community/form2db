@@ -29,6 +29,13 @@ public class Form2dbVersionHandler extends DefaultModuleVersionHandler {
         register(DeltaBuilder.update("1.1.3", "")
                 .addTask(new BootstrapSingleResource("Reinstall app config", "Bootstrap app config", "/mgnl-bootstrap/form2db-app/config.modules.form2db-app.apps.form2db.xml"))
         );
+        
+        register(DeltaBuilder.update("1.1.4", "")
+                .addTask(new BootstrapSingleResource("Reinstall app config", "Bootstrap app config", "/mgnl-bootstrap/form2db-app/config.modules.form2db-app.apps.form2db.xml"))
+                .addTask(new BootstrapSingleResource("Reinstall formProcessor", "Enable formProcessor by default", "/mgnl-bootstrap/form2db-app/config.modules.form.templates.components.form.formProcessors.form2db.xml"))
+                .addTask(new BootstrapSingleResource("Add JCR tab to form dialog", "Add JCR tab to form dialog", "/mgnl-bootstrap/form2db-app/config.modules.form.dialogs.form.form.tabs.tabJcr.xml"))
+                .addTask(new BootstrapSingleResource("Add Module Config in JCR", "Add Module Config in JCR", "/mgnl-bootstrap/form2db-app/config.modules.form2db-app.config.xml"))
+        );
 
     }
 

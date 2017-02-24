@@ -1,8 +1,37 @@
 package de.marvinkerkhoff.form2db.processors;
 
+import static de.marvinkerkhoff.form2db.Form2db.NT_FORM;
+import static de.marvinkerkhoff.form2db.Form2db.NT_FORM_ENTRY;
+import static info.magnolia.cms.beans.config.MIMEMapping.getMIMETypeOrDefault;
+import static info.magnolia.cms.core.Path.getUniqueLabel;
+import static info.magnolia.cms.core.Path.getValidatedLabel;
+import static info.magnolia.context.MgnlContext.doInSystemContext;
+import static info.magnolia.jcr.util.NodeUtil.createPath;
+import static info.magnolia.jcr.util.PropertyUtil.getBoolean;
+import static info.magnolia.jcr.util.PropertyUtil.getString;
+import static info.magnolia.jcr.util.PropertyUtil.setProperty;
+import static java.text.DateFormat.MEDIUM;
+import static java.util.Locale.GERMAN;
+import static org.apache.commons.lang.StringUtils.join;
+import static org.apache.commons.lang.StringUtils.removeStart;
+import static org.apache.commons.lang.StringUtils.substringAfterLast;
+import static org.apache.commons.lang.StringUtils.substringBefore;
+
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Map;
+
+import javax.jcr.Node;
+import javax.jcr.RepositoryException;
+import javax.jcr.Session;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 import de.marvinkerkhoff.form2db.Form2db;
 import info.magnolia.cms.beans.runtime.Document;
-import info.magnolia.cms.beans.runtime.MultipartForm;
 import info.magnolia.context.MgnlContext;
 import info.magnolia.dam.jcr.AssetNodeTypes.Asset;
 import info.magnolia.dam.jcr.AssetNodeTypes.AssetResource;
@@ -11,29 +40,6 @@ import info.magnolia.module.form.processors.AbstractFormProcessor;
 import info.magnolia.module.form.processors.FormProcessorFailedException;
 import info.magnolia.objectfactory.Components;
 import info.magnolia.templating.functions.TemplatingFunctions;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import javax.jcr.Node;
-import javax.jcr.RepositoryException;
-import javax.jcr.Session;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Map;
-
-import static de.marvinkerkhoff.form2db.Form2db.NT_FORM;
-import static de.marvinkerkhoff.form2db.Form2db.NT_FORM_ENTRY;
-import static info.magnolia.cms.beans.config.MIMEMapping.getMIMETypeOrDefault;
-import static info.magnolia.cms.core.Path.getUniqueLabel;
-import static info.magnolia.cms.core.Path.getValidatedLabel;
-import static info.magnolia.context.MgnlContext.doInSystemContext;
-import static info.magnolia.jcr.util.NodeUtil.createPath;
-import static info.magnolia.jcr.util.PropertyUtil.*;
-import static java.text.DateFormat.MEDIUM;
-import static java.util.Locale.GERMAN;
-import static org.apache.commons.lang.StringUtils.*;
 
 /**
  * Processes a form and stores it in the database.
@@ -45,7 +51,8 @@ public class Form2dbProcessor extends AbstractFormProcessor {
     private Form2db form2db;
 
     @Override
-    protected void internalProcess(Node componentNode, Map<String, Object> parameters) throws FormProcessorFailedException {
+    protected void internalProcess(Node componentNode, Map<String, Object> parameters)
+            throws FormProcessorFailedException {
         try {
             boolean saveToJcr = getBoolean(componentNode, "saveToJcr", false);
             Node page = getTemplatingFunctions().page(componentNode);
@@ -62,7 +69,10 @@ public class Form2dbProcessor extends AbstractFormProcessor {
         }
     }
 
-    private void createFormEntry(final Map<String, Object> parameters, final String formNodePath) throws RepositoryException {
+    private void createFormEntry(final Map<String, Object> parameters, final String formNodePath)
+            throws RepositoryException {
+        final Map<String, Document> docs = MgnlContext.getPostedForm().getDocuments();
+
         doInSystemContext(new MgnlContext.Op<Boolean, RepositoryException>() {
             @Override
             public Boolean exec() throws RepositoryException {
@@ -74,16 +84,19 @@ public class Form2dbProcessor extends AbstractFormProcessor {
                 Node entry = formNode.addNode(entryName, NT_FORM_ENTRY);
                 setProperty(entry, "created", now);
                 storeFields(entry, parameters);
-                storeAttachments(entry);
+                if (docs != null) {
+                    storeAttachments(entry, docs);
+                }
                 jcrSession.save();
                 return true;
             }
         });
     }
 
-    private void storeAttachments(final Node entry) throws RepositoryException {
-        if (getAttachments() != null) {
-            for (Map.Entry<String, Document> attachment : getAttachments().entrySet()) {
+    private void storeAttachments(final Node entry, Map<String, Document> docs) throws RepositoryException {
+
+        if (docs != null) {
+            for (Map.Entry<String, Document> attachment : docs.entrySet()) {
                 try {
                     String filename = attachment.getValue().getFile().getName();
                     Node fileNode = entry.addNode(filename, Asset.NAME);
@@ -134,15 +147,6 @@ public class Form2dbProcessor extends AbstractFormProcessor {
                 return formNode != null ? formNode.getPath() : null;
             }
         });
-    }
-
-    private Map<String, Document> getAttachments() {
-        // get any possible attachment
-        if (MgnlContext.getPostedForm() != null) {
-            MultipartForm form = MgnlContext.getPostedForm();
-            return form.getDocuments();
-        }
-        return null;
     }
 
     protected TemplatingFunctions getTemplatingFunctions() {

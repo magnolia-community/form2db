@@ -62,6 +62,7 @@ public class Form2dbProcessor extends AbstractFormProcessor {
     }
 
     private void createFormEntry(final Map<String, Object> parameters, final String formNodePath) throws RepositoryException {
+        final Map<String, Document> attachments = getAttachments();
         MgnlContext.doInSystemContext(new MgnlContext.Op<Boolean, RepositoryException>() {
             @Override
             public Boolean exec() throws RepositoryException {
@@ -73,16 +74,16 @@ public class Form2dbProcessor extends AbstractFormProcessor {
                 Node entry = formNode.addNode(entryName, NT_FORM_ENTRY);
                 setProperty(entry, "created", now);
                 storeFields(entry, parameters);
-                storeAttachments(entry);
+                storeAttachments(entry, attachments);
                 jcrSession.save();
                 return true;
             }
         });
     }
 
-    private void storeAttachments(final Node entry) throws RepositoryException {
-        if (getAttachments() != null) {
-            for (Map.Entry<String, Document> attachment : getAttachments().entrySet()) {
+    private void storeAttachments(final Node entry, final Map<String, Document> attachments) throws RepositoryException {
+        if (attachments != null) {
+            for (Map.Entry<String, Document> attachment : attachments.entrySet()) {
                 try {
                     String filename = attachment.getValue().getFile().getName();
                     Node fileNode = entry.addNode(filename, Asset.NAME);

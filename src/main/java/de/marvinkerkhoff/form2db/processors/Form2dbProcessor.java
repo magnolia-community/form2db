@@ -30,16 +30,23 @@ import static info.magnolia.cms.core.Path.getUniqueLabel;
 import static info.magnolia.cms.core.Path.getValidatedLabel;
 import static info.magnolia.context.MgnlContext.doInSystemContext;
 import static info.magnolia.jcr.util.NodeUtil.createPath;
-import static info.magnolia.jcr.util.PropertyUtil.*;
+import static info.magnolia.jcr.util.PropertyUtil.getBoolean;
+import static info.magnolia.jcr.util.PropertyUtil.getString;
+import static info.magnolia.jcr.util.PropertyUtil.setProperty;
 import static java.text.DateFormat.MEDIUM;
 import static java.util.Locale.GERMAN;
-import static org.apache.commons.lang.StringUtils.*;
+import static org.apache.commons.lang.StringUtils.join;
+import static org.apache.commons.lang.StringUtils.removeStart;
+import static org.apache.commons.lang.StringUtils.substringAfterLast;
+import static org.apache.commons.lang.StringUtils.substringBefore;
 
 /**
  * Processes a form and stores it in the database.
  */
 public class Form2dbProcessor extends AbstractFormProcessor {
     private static final Logger LOGGER = LoggerFactory.getLogger(Form2dbProcessor.class);
+
+    public static final String CREATED_PROPERTY_NAME = "created";
 
     private TemplatingFunctions templatingFunctions;
     private Form2db form2db;

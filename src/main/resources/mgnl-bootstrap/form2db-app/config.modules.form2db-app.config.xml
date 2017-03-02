@@ -1,10 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<sv:node sv:name="config" xmlns:sv="http://www.jcp.org/jcr/sv/1.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+<sv:node sv:name="config" xmlns:sv="http://www.jcp.org/jcr/sv/1.0">
   <sv:property sv:name="jcr:primaryType" sv:type="Name">
     <sv:value>mgnl:content</sv:value>
-  </sv:property>
-  <sv:property sv:name="jcr:uuid" sv:type="String">
-    <sv:value>5ddc6ff3-62ea-4f1f-914c-81079fbe0c55</sv:value>
   </sv:property>
   <sv:property sv:name="flatStructure" sv:type="String">
     <sv:value>true</sv:value>
@@ -12,16 +9,7 @@
   <sv:property sv:name="jcr:createdBy" sv:type="String">
     <sv:value>admin</sv:value>
   </sv:property>
-  <sv:property sv:name="mgnl:created" sv:type="Date">
-    <sv:value>2017-02-24T21:48:44.126+01:00</sv:value>
-  </sv:property>
-  <sv:property sv:name="mgnl:createdBy" sv:type="String">
-    <sv:value>superuser</sv:value>
-  </sv:property>
-  <sv:property sv:name="mgnl:lastModified" sv:type="Date">
-    <sv:value>2017-02-24T21:51:28.941+01:00</sv:value>
-  </sv:property>
-  <sv:property sv:name="mgnl:lastModifiedBy" sv:type="String">
-    <sv:value>superuser</sv:value>
+  <sv:property sv:name="sortHeaderByName" sv:type="String">
+    <sv:value>false</sv:value>
   </sv:property>
 </sv:node>

@@ -1,5 +1,27 @@
 package de.marvinkerkhoff.form2db.processors;
 
+import de.marvinkerkhoff.form2db.Form2db;
+import info.magnolia.cms.beans.runtime.Document;
+import info.magnolia.context.MgnlContext;
+import info.magnolia.dam.jcr.AssetNodeTypes.Asset;
+import info.magnolia.dam.jcr.AssetNodeTypes.AssetResource;
+import info.magnolia.jcr.util.NodeTypes;
+import info.magnolia.module.form.processors.AbstractFormProcessor;
+import info.magnolia.module.form.processors.FormProcessorFailedException;
+import info.magnolia.objectfactory.Components;
+import info.magnolia.templating.functions.TemplatingFunctions;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
+import javax.jcr.Node;
+import javax.jcr.RepositoryException;
+import javax.jcr.Session;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Map;
+
 import static de.marvinkerkhoff.form2db.Form2db.NT_FORM;
 import static de.marvinkerkhoff.form2db.Form2db.NT_FORM_ENTRY;
 import static info.magnolia.cms.beans.config.MIMEMapping.getMIMETypeOrDefault;
@@ -17,35 +39,13 @@ import static org.apache.commons.lang.StringUtils.removeStart;
 import static org.apache.commons.lang.StringUtils.substringAfterLast;
 import static org.apache.commons.lang.StringUtils.substringBefore;
 
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.text.SimpleDateFormat;
-import java.util.Date;
-import java.util.Map;
-
-import javax.jcr.Node;
-import javax.jcr.RepositoryException;
-import javax.jcr.Session;
-
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
-
-import de.marvinkerkhoff.form2db.Form2db;
-import info.magnolia.cms.beans.runtime.Document;
-import info.magnolia.context.MgnlContext;
-import info.magnolia.dam.jcr.AssetNodeTypes.Asset;
-import info.magnolia.dam.jcr.AssetNodeTypes.AssetResource;
-import info.magnolia.jcr.util.NodeTypes;
-import info.magnolia.module.form.processors.AbstractFormProcessor;
-import info.magnolia.module.form.processors.FormProcessorFailedException;
-import info.magnolia.objectfactory.Components;
-import info.magnolia.templating.functions.TemplatingFunctions;
-
 /**
  * Processes a form and stores it in the database.
  */
 public class Form2dbProcessor extends AbstractFormProcessor {
     private static final Logger LOGGER = LoggerFactory.getLogger(Form2dbProcessor.class);
+
+    public static final String CREATED_PROPERTY_NAME = "created";
 
     private TemplatingFunctions templatingFunctions;
     private Form2db form2db;

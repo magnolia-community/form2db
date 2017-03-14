@@ -192,7 +192,14 @@ public class ExcelCreator {
             // Add up at the end the other properties that are only present in the Form2Db workspace
             for (String propName : propertyNames) {
                 if (!sortOrderOfFormFieldsCleanedUp.contains(propName)) {
-                    sortOrderOfFormFieldsCleanedUp.add(propName);
+                    if (Form2dbProcessor.CREATED_PROPERTY_NAME.equals(propName)) {
+                        // put created property at first column
+                        List<String> listWithCreated = new ArrayList<>(singletonList(propName));
+                        listWithCreated.addAll(sortOrderOfFormFieldsCleanedUp);
+                        sortOrderOfFormFieldsCleanedUp = listWithCreated;
+                    } else {
+                        sortOrderOfFormFieldsCleanedUp.add(propName);
+                    }
                 }
             }
         } else {

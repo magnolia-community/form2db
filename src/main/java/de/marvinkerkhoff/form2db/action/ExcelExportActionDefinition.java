@@ -3,7 +3,7 @@ package de.marvinkerkhoff.form2db.action;
 import info.magnolia.ui.contentapp.detail.action.AbstractItemActionDefinition;
 
 /**
- * Defines an action for export deadlink-reports to excel.
+ * Defines an action for export to excel.
  *
  * @author marvink2
  */

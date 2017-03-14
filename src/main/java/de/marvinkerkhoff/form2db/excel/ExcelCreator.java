@@ -47,8 +47,8 @@ import static java.util.Collections.singletonList;
 /**
  * Creates an excel file.
  */
-public class ExcelCreater {
-    private static final Logger LOGGER = LoggerFactory.getLogger(ExcelCreater.class);
+public class ExcelCreator {
+    private static final Logger LOGGER = LoggerFactory.getLogger(ExcelCreator.class);
 
     private static final int HEADER_ROW_NUMBER = 0;
     private static final Collator COLLATOR = Collator.getInstance(Locale.GERMAN);
@@ -57,7 +57,7 @@ public class ExcelCreater {
     private CellStyle headerStyle;
     private Form2db form2db;
 
-    public ExcelCreater(Node rootNode) throws RepositoryException, IOException {
+    public ExcelCreator(Node rootNode) throws RepositoryException, IOException {
         Workbook wb = new XSSFWorkbook();
         initHeaderStyle(wb);
 
@@ -157,12 +157,16 @@ public class ExcelCreater {
 
         // skip form field order detection, if sorting by field names
         if (!getForm2db().isSortHeaderByName()) {
+            Node formNode = formNodeInForm2Db;
+            if (formNode.isNodeType(Form2db.NT_FORM_ENTRY)) {
+                formNode = formNode.getParent();
+            }
             // Get root website name & form name
-            final String rootWebsiteName = formNodeInForm2Db.getParent().getName();
-            final String formName = formNodeInForm2Db.getName();
+            final String rootWebsitePath = formNode.getParent().getPath();
+            final String formName = formNode.getName();
 
             // Get form node in website with that name
-            final Node formNodeInWebsiteWorkspace = getFormNodeForNameAndWebsite(rootWebsiteName, formName);
+            final Node formNodeInWebsiteWorkspace = getFormNodeForNameAndWebsite(rootWebsitePath, formName);
 
             // Get sort order of nodes from relevant web page (website workspace)
             sortOrderOfFormField = getSortOrderOfFormFieldsFromWebPage(formNodeInWebsiteWorkspace);
@@ -220,23 +224,23 @@ public class ExcelCreater {
         return propertyNames;
     }
 
-    private Node getFormNodeForNameAndWebsite(String rootWebsiteName, String formName) {
+    private Node getFormNodeForNameAndWebsite(String rootWebsitePath, String formName) {
         Node formNode = null;
-        if (rootWebsiteName != null && formName != null) {
-            String query = "SELECT p.* FROM [nt:base] AS p WHERE ISDESCENDANTNODE('/" + rootWebsiteName + "') AND p.[formName] = '" + formName + "'";
+        if (rootWebsitePath != null && formName != null) {
+            String query = "SELECT p.* FROM [nt:base] AS p WHERE ISDESCENDANTNODE('" + rootWebsitePath + "') AND p.[formName] = '" + formName + "'";
 
             try {
                 NodeIterator fieldsWrappersNodeIterator = QueryUtil.search(WEBSITE, query, Query.JCR_SQL2);
                 List<Node> sortedFieldsWrappersNodes = asList(asIterable(fieldsWrappersNodeIterator));
                 if (CollectionUtils.isEmpty(sortedFieldsWrappersNodes)) {
-                    LOGGER.warn("No result when searching for form '{}' starting from '/{}' in the website workspace.", formName, rootWebsiteName);
+                    LOGGER.warn("No result when searching for form '{}' starting from '{}' in the website workspace.", formName, rootWebsitePath);
                 } else if (sortedFieldsWrappersNodes.size() == 1) {
                     formNode = sortedFieldsWrappersNodes.get(0);
                 } else {
-                    LOGGER.warn("Too many results when searching for form '{}' starting from '/{}' in the website workspace. This form name must be unique for that website!", formName, rootWebsiteName);
+                    LOGGER.warn("Too many results when searching for form '{}' starting from '{}' in the website workspace. This form name must be unique for that website!", formName, rootWebsitePath);
                 }
             } catch (RepositoryException e) {
-                LOGGER.error("Problem when trying to search for form '{}' starting from '/{}' in the website workspace.", formName, rootWebsiteName, e);
+                LOGGER.error("Problem when trying to search for form '{}' starting from '{}' in the website workspace.", formName, rootWebsitePath, e);
             }
         }
         return formNode;

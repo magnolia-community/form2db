@@ -1,101 +1,87 @@
 package de.marvinkerkhoff.form2db.jcr;
 
+import info.magnolia.jcr.util.NodeUtil;
 import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.jcr.Node;
-import javax.jcr.NodeIterator;
 import javax.jcr.RepositoryException;
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 
-import static com.google.common.collect.Lists.newArrayList;
-import static info.magnolia.jcr.util.NodeUtil.getCollectionFromNodeIterator;
+import static info.magnolia.jcr.util.NodeUtil.asList;
 import static info.magnolia.jcr.util.NodeUtil.getName;
+import static info.magnolia.jcr.util.PropertyUtil.getPropertyOrNull;
 
 /**
  * SearchUtils for JCR.
  */
 public final class JcrSearchUtils {
-
-    private static final Logger log = LoggerFactory.getLogger(JcrSearchUtils.class);
+    private static final Logger LOGGER = LoggerFactory.getLogger(JcrSearchUtils.class);
 
     private JcrSearchUtils() {
     }
 
-    /*
-     * Recursive search in JCR tree: node name matching value Parameters: -
-     * node: node to start the search from - propertyValueConditions: properties
-     * searched along with the value expected for it - searchResults: set this
-     * to null when launching the search
+    /**
+     * Recursive iteration of nodes beginning by root node for node with one of the given name.
+     *
+     * @param rootNode root node
+     * @param nameConditions name conditions
      */
-    public static List<Node> searchRecursivelyNameMatchVal(Node rootNode, List<String> nameConditions, List<Node> searchResults) {
-        if (searchResults == null) {
-            searchResults = newArrayList();
-        }
-
+    public static List<Node> searchRecursivelyNameMatchVal(Node rootNode, List<String> nameConditions) {
+        List<Node> searchResults = new ArrayList<>();
         for (Node currentSubNode : getNodes(rootNode)) {
-
             for (String nameCond : nameConditions) {
                 if (StringUtils.equals(nameCond, getName(currentSubNode))) {
                     searchResults.add(currentSubNode);
                 }
             }
 
-            searchRecursivelyNameMatchVal(currentSubNode, nameConditions, searchResults);
+            searchResults.addAll(searchRecursivelyNameMatchVal(currentSubNode, nameConditions));
         }
         return searchResults;
     }
 
-    private static Collection<Node> getNodes(Node node) {
-        Collection<Node> nodes = Collections.emptyList();
+    private static List<Node> getNodes(Node node) {
+        List<Node> nodes = Collections.emptyList();
         try {
-            nodes = getCollectionFromNodeIterator(node.getNodes());
+            nodes = asList(NodeUtil.getNodes(node));
         } catch (RepositoryException e) {
-            log.error("Recursive search in JCR tree via JCR API failed (node name matching value)", e);
+            LOGGER.error("Recursive search in JCR tree via JCR API failed (node name matching value)", e);
         }
         return nodes;
     }
 
-    /*
-     * Recursive search in JCR tree: required properties present Parameters: -
-     * node: node to start the search from - propertyValueConditions: properties
-     * searched along with the value expected for it - searchResults: set this
-     * to null when launching the search
+    /**
+     * Recursive iteration of nodes beginning by root node for nodes having given properties.
+     *
+     * @param rootNode root node
+     * @param propertyPresConditions property conditions
      */
-    public static List<Node> searchRecursivelyPropPres(Node node, List<String> propertyPresConditions, List<Node> searchResults) {
-        if (searchResults == null) {
-            searchResults = new ArrayList<>();
-        }
-        try {
-            NodeIterator list = node.getNodes();
+    public static List<Node> searchRecursivelyPropPres(Node rootNode, List<String> propertyPresConditions) {
+        List<Node> searchResults = new ArrayList<>();
+        List<Node> nodes = getNodes(rootNode);
 
-            while (list.hasNext()) {
-                Node currentSubNode = list.nextNode();
-                addSubNodeIfHasAllRequiredProperties(propertyPresConditions, searchResults, currentSubNode);
-                searchRecursivelyPropPres(currentSubNode, propertyPresConditions, searchResults);
-            }
-
-        } catch (RepositoryException rpe) {
-            log.error("Recursive search in JCR tree via JCR API failed (required properties present)", rpe);
+        for (Node subNode : nodes) {
+            addSubNodeIfHasAllRequiredProperties(propertyPresConditions, searchResults, subNode);
+            searchResults.addAll(searchRecursivelyPropPres(subNode, propertyPresConditions));
         }
         return searchResults;
     }
 
-    private static void addSubNodeIfHasAllRequiredProperties(final List<String> propertyPresConditions, final List<Node> searchResults, final Node currentSubNode) throws RepositoryException {
+    private static void addSubNodeIfHasAllRequiredProperties(final List<String> propertyPresConditions, final List<Node> searchResults, final Node currentSubNode) {
         boolean hasAllRequiredProperties = true;
 
         for (String propertyName : propertyPresConditions) {
-            if (!currentSubNode.hasProperty(propertyName)) {
+            if (getPropertyOrNull(currentSubNode, propertyName) == null) {
                 hasAllRequiredProperties = false;
+                break;
             }
         }
         if (hasAllRequiredProperties) {
             searchResults.add(currentSubNode);
         }
     }
-
 }

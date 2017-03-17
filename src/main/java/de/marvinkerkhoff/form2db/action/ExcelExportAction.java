@@ -10,11 +10,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.inject.Inject;
+import javax.jcr.Node;
+import javax.jcr.RepositoryException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+
+import static info.magnolia.jcr.util.NodeUtil.getName;
 
 /**
  * Exports nodes to excel.
@@ -37,10 +41,22 @@ public class ExcelExportAction extends AbstractAction<ExcelExportActionDefinitio
         try {
             ExcelCreator excel = new ExcelCreator(nodeItemToEdit.getJcrItem());
             file = excel.getFile();
-            openFileInBlankWindow(nodeItemToEdit.getNodeName() + ".xlsx");
+            openFileInBlankWindow(getExcelFileName() + ".xlsx");
         } catch (Exception e) {
             LOGGER.error("Error executing excel export action.", e);
         }
+    }
+
+    private String getExcelFileName() throws RepositoryException {
+        String sheetName = nodeItemToEdit.getNodeName();
+        final Node jcrItem = nodeItemToEdit.getJcrItem();
+        if (jcrItem != null) {
+            final Node parentNode = jcrItem.getParent();
+            if (parentNode != null) {
+                sheetName = getName(parentNode);
+            }
+        }
+        return sheetName;
     }
 
     private void openFileInBlankWindow(String fileName) {

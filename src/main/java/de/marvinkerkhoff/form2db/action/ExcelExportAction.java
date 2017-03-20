@@ -2,6 +2,7 @@ package de.marvinkerkhoff.form2db.action;
 
 import com.vaadin.server.Page;
 import com.vaadin.server.StreamResource;
+import de.marvinkerkhoff.form2db.Form2db;
 import de.marvinkerkhoff.form2db.excel.ExcelCreator;
 import info.magnolia.ui.api.action.AbstractAction;
 import info.magnolia.ui.api.action.ActionExecutionException;
@@ -10,11 +11,15 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.inject.Inject;
+import javax.jcr.Node;
+import javax.jcr.RepositoryException;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.io.InputStream;
+
+import static info.magnolia.jcr.util.NodeUtil.getName;
 
 /**
  * Exports nodes to excel.
@@ -37,10 +42,31 @@ public class ExcelExportAction extends AbstractAction<ExcelExportActionDefinitio
         try {
             ExcelCreator excel = new ExcelCreator(nodeItemToEdit.getJcrItem());
             file = excel.getFile();
-            openFileInBlankWindow(nodeItemToEdit.getNodeName() + ".xlsx");
+            openFileInBlankWindow(getExcelFileName() + ".xlsx");
         } catch (Exception e) {
             LOGGER.error("Error executing excel export action.", e);
         }
+    }
+
+    /**
+     * Returns the name under which the excel file will be saved. The following will be returned:
+     * <ul>
+     *     <li>If single export: the name of the rootNode</li>
+     *     <li>If form export and flat structure: the name of the rootNode</li>
+     *     <li>If form export and deep structure: the name of the parent page</li>
+     * </ul>
+     */
+    private String getExcelFileName() throws RepositoryException {
+        final Node rootNode = nodeItemToEdit.getJcrItem();
+        String sheetName = getName(rootNode);
+        final String primaryNodeType = rootNode.getPrimaryNodeType().getName();
+        if (Form2db.NT_FORM.equals(primaryNodeType)) {
+            final Node parentNode = rootNode.getParent();
+            if (parentNode.getDepth() > 1) {
+                sheetName = getName(parentNode);
+            }
+        }
+        return sheetName;
     }
 
     private void openFileInBlankWindow(String fileName) {

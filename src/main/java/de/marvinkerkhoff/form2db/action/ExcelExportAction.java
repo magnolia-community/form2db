@@ -2,6 +2,7 @@ package de.marvinkerkhoff.form2db.action;
 
 import com.vaadin.server.Page;
 import com.vaadin.server.StreamResource;
+import de.marvinkerkhoff.form2db.Form2db;
 import de.marvinkerkhoff.form2db.excel.ExcelCreator;
 import info.magnolia.ui.api.action.AbstractAction;
 import info.magnolia.ui.api.action.ActionExecutionException;
@@ -47,12 +48,21 @@ public class ExcelExportAction extends AbstractAction<ExcelExportActionDefinitio
         }
     }
 
+    /**
+     * Returns the name under which the excel file will be saved. The following will be returned:
+     * <ul>
+     *     <li>If single export: the name of the rootNode</li>
+     *     <li>If form export and flat structure: the name of the rootNode</li>
+     *     <li>If form export and deep structure: the name of the parent page</li>
+     * </ul>
+     */
     private String getExcelFileName() throws RepositoryException {
-        String sheetName = nodeItemToEdit.getNodeName();
-        final Node jcrItem = nodeItemToEdit.getJcrItem();
-        if (jcrItem != null) {
-            final Node parentNode = jcrItem.getParent();
-            if (parentNode != null) {
+        final Node rootNode = nodeItemToEdit.getJcrItem();
+        String sheetName = getName(rootNode);
+        final String primaryNodeType = rootNode.getPrimaryNodeType().getName();
+        if (Form2db.NT_FORM.equals(primaryNodeType)) {
+            final Node parentNode = rootNode.getParent();
+            if (parentNode.getDepth() > 1) {
                 sheetName = getName(parentNode);
             }
         }

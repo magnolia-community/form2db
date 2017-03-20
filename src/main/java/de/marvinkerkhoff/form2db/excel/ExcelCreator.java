@@ -40,7 +40,6 @@ import java.util.Locale;
 
 import static info.magnolia.jcr.util.NodeUtil.asIterable;
 import static info.magnolia.jcr.util.NodeUtil.asList;
-import static info.magnolia.jcr.util.NodeUtil.getName;
 import static info.magnolia.jcr.util.PropertyUtil.getString;
 import static info.magnolia.repository.RepositoryConstants.WEBSITE;
 import static java.util.Collections.singletonList;
@@ -62,7 +61,7 @@ public class ExcelCreator {
         Workbook wb = new XSSFWorkbook();
         initHeaderStyle(wb);
 
-        Sheet sheet = wb.createSheet(getSheetName(rootNode));
+        Sheet sheet = wb.createSheet(rootNode.getName());
         sheet.setFitToPage(true);
         sheet.setHorizontallyCenter(true);
         PrintSetup printSetup = sheet.getPrintSetup();
@@ -73,15 +72,6 @@ public class ExcelCreator {
         try (FileOutputStream out = new FileOutputStream(file)) {
             wb.write(out);
         }
-    }
-
-    private String getSheetName(final Node rootNode) throws RepositoryException {
-        String sheetName = getName(rootNode);
-        Node parentNode = rootNode.getParent();
-        if (parentNode != null) {
-            sheetName = getName(parentNode);
-        }
-        return sheetName;
     }
 
     private void initHeaderStyle(final Workbook wb) {

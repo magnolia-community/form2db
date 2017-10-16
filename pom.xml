@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
     <parent>
         <groupId>info.magnolia.maven.poms-forge</groupId>
@@ -9,7 +8,7 @@
     </parent>
     <groupId>de.marvinkerkhoff</groupId>
     <artifactId>form2db-app</artifactId>
-    <version>1.2.1-SNAPSHOT</version>
+    <version>1.2.1</version>
     <packaging>jar</packaging>
     <name>form2db-app Magnolia Module</name>
     <description>With this app you can save your form data in a generic app and export it to excel.</description>
@@ -110,6 +109,6 @@
         <connection>scm:git:http://git.magnolia-cms.com/forge/form2db.git</connection>
         <developerConnection>scm:git:https://git.magnolia-cms.com/forge/form2db.git</developerConnection>
         <url>http://git.magnolia-cms.com/gitweb/?p=forge/form2db.git</url>
-        <tag>HEAD</tag>
+        <tag>form2db-app-1.2.1</tag>
     </scm>
 </project>

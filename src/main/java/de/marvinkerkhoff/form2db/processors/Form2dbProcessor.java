@@ -30,8 +30,6 @@ import javax.jcr.Session;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.google.common.base.Strings;
-
 import de.marvinkerkhoff.form2db.Form2db;
 import info.magnolia.cms.beans.runtime.Document;
 import info.magnolia.context.MgnlContext;

@@ -30,6 +30,8 @@ import javax.jcr.Session;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
+import com.google.common.base.Strings;
+
 import de.marvinkerkhoff.form2db.Form2db;
 import info.magnolia.cms.beans.runtime.Document;
 import info.magnolia.context.MgnlContext;
@@ -58,7 +60,7 @@ public class Form2dbProcessor extends AbstractFormProcessor {
             Node page = getTemplatingFunctions().page(componentNode);
             if (saveToJcr && page != null) {
                 String pagePath = page.getPath();
-                String formNodePath = addOrGetBaseStructure(pagePath, getString(componentNode, "formName", "formName"));
+                String formNodePath = addOrGetBaseStructure(pagePath, getString(componentNode, "formName", "formName").trim());
 
                 if (formNodePath != null) {
                     createFormEntry(parameters, formNodePath);

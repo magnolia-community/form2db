@@ -47,6 +47,7 @@ public class Form2db implements ModuleLifecycle {
     public static final String NT_FORM_ENTRY = "mgnl:formEntryNode";
 
     private boolean flatStructure = true;
+    private boolean sortHeaderByName = false;
 
     public boolean isFlatStructure() {
         return flatStructure;
@@ -54,6 +55,14 @@ public class Form2db implements ModuleLifecycle {
 
     public void setFlatStructure(final boolean flatStructure) {
         this.flatStructure = flatStructure;
+    }
+
+    public boolean isSortHeaderByName() {
+        return sortHeaderByName;
+    }
+
+    public void setSortHeaderByName(final boolean sortHeaderByName) {
+        this.sortHeaderByName = sortHeaderByName;
     }
 
     @Override

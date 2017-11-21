@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<sv:node sv:name="form2db" xmlns:sv="http://www.jcp.org/jcr/sv/1.0">
+<sv:node xmlns:sv="http://www.jcp.org/jcr/sv/1.0" sv:name="form2db">
   <sv:property sv:name="jcr:primaryType" sv:type="Name">
     <sv:value>mgnl:contentNode</sv:value>
   </sv:property>
@@ -15,9 +15,6 @@
   <sv:property sv:name="icon" sv:type="String">
     <sv:value>icon-forums-thread</sv:value>
   </sv:property>
-  <sv:property sv:name="jcr:createdBy" sv:type="String">
-    <sv:value>admin</sv:value>
-  </sv:property>
   <sv:property sv:name="name" sv:type="String">
     <sv:value>form2db</sv:value>
   </sv:property>
@@ -27,9 +24,6 @@
     </sv:property>
     <sv:property sv:name="jcr:mixinTypes" sv:type="Name" sv:multiple="true">
       <sv:value>mix:lockable</sv:value>
-    </sv:property>
-    <sv:property sv:name="jcr:createdBy" sv:type="String">
-      <sv:value>admin</sv:value>
     </sv:property>
     <sv:node sv:name="browser">
       <sv:property sv:name="jcr:primaryType" sv:type="Name">
@@ -41,9 +35,6 @@
       <sv:property sv:name="class" sv:type="String">
         <sv:value>info.magnolia.ui.contentapp.browser.BrowserSubAppDescriptor</sv:value>
       </sv:property>
-      <sv:property sv:name="jcr:createdBy" sv:type="String">
-        <sv:value>admin</sv:value>
-      </sv:property>
       <sv:property sv:name="subAppClass" sv:type="String">
         <sv:value>info.magnolia.ui.contentapp.browser.BrowserSubApp</sv:value>
       </sv:property>
@@ -53,9 +44,6 @@
         </sv:property>
         <sv:property sv:name="jcr:mixinTypes" sv:type="Name" sv:multiple="true">
           <sv:value>mix:lockable</sv:value>
-        </sv:property>
-        <sv:property sv:name="jcr:createdBy" sv:type="String">
-          <sv:value>admin</sv:value>
         </sv:property>
         <sv:node sv:name="delete">
           <sv:property sv:name="jcr:primaryType" sv:type="Name">
@@ -70,20 +58,6 @@
           <sv:property sv:name="icon" sv:type="String">
             <sv:value>icon-delete</sv:value>
           </sv:property>
-          <sv:property sv:name="jcr:createdBy" sv:type="String">
-            <sv:value>admin</sv:value>
-          </sv:property>
-          <sv:node sv:name="availability">
-            <sv:property sv:name="jcr:primaryType" sv:type="Name">
-              <sv:value>mgnl:contentNode</sv:value>
-            </sv:property>
-            <sv:property sv:name="jcr:createdBy" sv:type="String">
-              <sv:value>admin</sv:value>
-            </sv:property>
-            <sv:property sv:name="ruleClass" sv:type="String">
-              <sv:value>info.magnolia.ui.api.availability.IsNotDeletedRule</sv:value>
-            </sv:property>
-          </sv:node>
         </sv:node>
         <sv:node sv:name="edit">
           <sv:property sv:name="jcr:primaryType" sv:type="Name">
@@ -101,23 +75,9 @@
           <sv:property sv:name="icon" sv:type="String">
             <sv:value>icon-edit</sv:value>
           </sv:property>
-          <sv:property sv:name="jcr:createdBy" sv:type="String">
-            <sv:value>admin</sv:value>
-          </sv:property>
           <sv:property sv:name="subAppId" sv:type="String">
             <sv:value>detail</sv:value>
           </sv:property>
-          <sv:node sv:name="availability">
-            <sv:property sv:name="jcr:primaryType" sv:type="Name">
-              <sv:value>mgnl:contentNode</sv:value>
-            </sv:property>
-            <sv:property sv:name="jcr:createdBy" sv:type="String">
-              <sv:value>admin</sv:value>
-            </sv:property>
-            <sv:property sv:name="ruleClass" sv:type="String">
-              <sv:value>info.magnolia.ui.api.availability.IsNotDeletedRule</sv:value>
-            </sv:property>
-          </sv:node>
         </sv:node>
         <sv:node sv:name="editAsset">
           <sv:property sv:name="jcr:primaryType" sv:type="Name">
@@ -135,23 +95,9 @@
           <sv:property sv:name="icon" sv:type="String">
             <sv:value>icon-edit</sv:value>
           </sv:property>
-          <sv:property sv:name="jcr:createdBy" sv:type="String">
-            <sv:value>admin</sv:value>
-          </sv:property>
           <sv:property sv:name="subAppId" sv:type="String">
             <sv:value>detailAsset</sv:value>
           </sv:property>
-          <sv:node sv:name="availability">
-            <sv:property sv:name="jcr:primaryType" sv:type="Name">
-              <sv:value>mgnl:contentNode</sv:value>
-            </sv:property>
-            <sv:property sv:name="jcr:createdBy" sv:type="String">
-              <sv:value>admin</sv:value>
-            </sv:property>
-            <sv:property sv:name="ruleClass" sv:type="String">
-              <sv:value>info.magnolia.ui.api.availability.IsNotDeletedRule</sv:value>
-            </sv:property>
-          </sv:node>
         </sv:node>
         <sv:node sv:name="export">
           <sv:property sv:name="jcr:primaryType" sv:type="Name">
@@ -169,20 +115,6 @@
           <sv:property sv:name="icon" sv:type="String">
             <sv:value>icon-export</sv:value>
           </sv:property>
-          <sv:property sv:name="jcr:createdBy" sv:type="String">
-            <sv:value>admin</sv:value>
-          </sv:property>
-          <sv:node sv:name="availability">
-            <sv:property sv:name="jcr:primaryType" sv:type="Name">
-              <sv:value>mgnl:contentNode</sv:value>
-            </sv:property>
-            <sv:property sv:name="jcr:createdBy" sv:type="String">
-              <sv:value>admin</sv:value>
-            </sv:property>
-            <sv:property sv:name="ruleClass" sv:type="String">
-              <sv:value>info.magnolia.ui.api.availability.IsNotDeletedRule</sv:value>
-            </sv:property>
-          </sv:node>
         </sv:node>
         <sv:node sv:name="import">
           <sv:property sv:name="jcr:primaryType" sv:type="Name">
@@ -200,23 +132,9 @@
           <sv:property sv:name="icon" sv:type="String">
             <sv:value>icon-import</sv:value>
           </sv:property>
-          <sv:property sv:name="jcr:createdBy" sv:type="String">
-            <sv:value>admin</sv:value>
-          </sv:property>
           <sv:property sv:name="name" sv:type="String">
             <sv:value>import</sv:value>
           </sv:property>
-          <sv:node sv:name="availability">
-            <sv:property sv:name="jcr:primaryType" sv:type="Name">
-              <sv:value>mgnl:contentNode</sv:value>
-            </sv:property>
-            <sv:property sv:name="jcr:createdBy" sv:type="String">
-              <sv:value>admin</sv:value>
-            </sv:property>
-            <sv:property sv:name="ruleClass" sv:type="String">
-              <sv:value>info.magnolia.ui.api.availability.IsNotDeletedRule</sv:value>
-            </sv:property>
-          </sv:node>
         </sv:node>
         <sv:node sv:name="excelExport">
           <sv:property sv:name="jcr:primaryType" sv:type="Name">
@@ -231,18 +149,9 @@
           <sv:property sv:name="icon" sv:type="String">
             <sv:value>icon-export</sv:value>
           </sv:property>
-          <sv:property sv:name="jcr:createdBy" sv:type="String">
-            <sv:value>admin</sv:value>
-          </sv:property>
           <sv:node sv:name="availability">
             <sv:property sv:name="jcr:primaryType" sv:type="Name">
               <sv:value>mgnl:contentNode</sv:value>
-            </sv:property>
-            <sv:property sv:name="jcr:createdBy" sv:type="String">
-              <sv:value>admin</sv:value>
-            </sv:property>
-            <sv:property sv:name="ruleClass" sv:type="String">
-              <sv:value>info.magnolia.ui.api.availability.IsNotDeletedRule</sv:value>
             </sv:property>
             <sv:node sv:name="nodeTypes">
               <sv:property sv:name="jcr:primaryType" sv:type="Name">
@@ -253,9 +162,6 @@
               </sv:property>
               <sv:property sv:name="formEntry" sv:type="String">
                 <sv:value>mgnl:formEntryNode</sv:value>
-              </sv:property>
-              <sv:property sv:name="jcr:createdBy" sv:type="String">
-                <sv:value>admin</sv:value>
               </sv:property>
             </sv:node>
           </sv:node>
@@ -273,9 +179,6 @@
           <sv:property sv:name="icon" sv:type="String">
             <sv:value>icon-download</sv:value>
           </sv:property>
-          <sv:property sv:name="jcr:createdBy" sv:type="String">
-            <sv:value>admin</sv:value>
-          </sv:property>
           <sv:node sv:name="availability">
             <sv:property sv:name="jcr:primaryType" sv:type="Name">
               <sv:value>mgnl:contentNode</sv:value>
@@ -283,43 +186,12 @@
             <sv:property sv:name="jcr:mixinTypes" sv:type="Name" sv:multiple="true">
               <sv:value>mix:lockable</sv:value>
             </sv:property>
-            <sv:property sv:name="jcr:createdBy" sv:type="String">
-              <sv:value>admin</sv:value>
-            </sv:property>
-            <sv:node sv:name="rules">
-              <sv:property sv:name="jcr:primaryType" sv:type="Name">
-                <sv:value>mgnl:contentNode</sv:value>
-              </sv:property>
-              <sv:property sv:name="jcr:mixinTypes" sv:type="Name" sv:multiple="true">
-                <sv:value>mix:lockable</sv:value>
-              </sv:property>
-              <sv:property sv:name="jcr:createdBy" sv:type="String">
-                <sv:value>admin</sv:value>
-              </sv:property>
-              <sv:node sv:name="IsNotDeletedRule">
-                <sv:property sv:name="jcr:primaryType" sv:type="Name">
-                  <sv:value>mgnl:contentNode</sv:value>
-                </sv:property>
-                <sv:property sv:name="jcr:mixinTypes" sv:type="Name" sv:multiple="true">
-                  <sv:value>mix:lockable</sv:value>
-                </sv:property>
-                <sv:property sv:name="implementationClass" sv:type="String">
-                  <sv:value>info.magnolia.ui.framework.availability.IsNotDeletedRule</sv:value>
-                </sv:property>
-                <sv:property sv:name="jcr:createdBy" sv:type="String">
-                  <sv:value>admin</sv:value>
-                </sv:property>
-              </sv:node>
-            </sv:node>
             <sv:node sv:name="nodeTypes">
               <sv:property sv:name="jcr:primaryType" sv:type="Name">
                 <sv:value>mgnl:contentNode</sv:value>
               </sv:property>
               <sv:property sv:name="file" sv:type="String">
                 <sv:value>mgnl:asset</sv:value>
-              </sv:property>
-              <sv:property sv:name="jcr:createdBy" sv:type="String">
-                <sv:value>admin</sv:value>
               </sv:property>
             </sv:node>
           </sv:node>
@@ -340,15 +212,9 @@
           <sv:property sv:name="icon" sv:type="String">
             <sv:value>icon-edit</sv:value>
           </sv:property>
-          <sv:property sv:name="jcr:createdBy" sv:type="String">
-            <sv:value>admin</sv:value>
-          </sv:property>
           <sv:node sv:name="availability">
             <sv:property sv:name="jcr:primaryType" sv:type="Name">
               <sv:value>mgnl:contentNode</sv:value>
-            </sv:property>
-            <sv:property sv:name="jcr:createdBy" sv:type="String">
-              <sv:value>admin</sv:value>
             </sv:property>
             <sv:property sv:name="nodes" sv:type="String">
               <sv:value>false</sv:value>
@@ -369,18 +235,12 @@
         <sv:property sv:name="defaultAction" sv:type="String">
           <sv:value>edit</sv:value>
         </sv:property>
-        <sv:property sv:name="jcr:createdBy" sv:type="String">
-          <sv:value>admin</sv:value>
-        </sv:property>
         <sv:node sv:name="sections">
           <sv:property sv:name="jcr:primaryType" sv:type="Name">
             <sv:value>mgnl:contentNode</sv:value>
           </sv:property>
           <sv:property sv:name="jcr:mixinTypes" sv:type="Name" sv:multiple="true">
             <sv:value>mix:lockable</sv:value>
-          </sv:property>
-          <sv:property sv:name="jcr:createdBy" sv:type="String">
-            <sv:value>admin</sv:value>
           </sv:property>
           <sv:node sv:name="mgnl-asset">
             <sv:property sv:name="jcr:primaryType" sv:type="Name">
@@ -389,18 +249,12 @@
             <sv:property sv:name="jcr:mixinTypes" sv:type="Name" sv:multiple="true">
               <sv:value>mix:lockable</sv:value>
             </sv:property>
-            <sv:property sv:name="jcr:createdBy" sv:type="String">
-              <sv:value>admin</sv:value>
-            </sv:property>
             <sv:node sv:name="groups">
               <sv:property sv:name="jcr:primaryType" sv:type="Name">
                 <sv:value>mgnl:contentNode</sv:value>
               </sv:property>
               <sv:property sv:name="jcr:mixinTypes" sv:type="Name" sv:multiple="true">
                 <sv:value>mix:lockable</sv:value>
-              </sv:property>
-              <sv:property sv:name="jcr:createdBy" sv:type="String">
-                <sv:value>admin</sv:value>
               </sv:property>
               <sv:node sv:name="addingActions">
                 <sv:property sv:name="jcr:primaryType" sv:type="Name">
@@ -409,18 +263,12 @@
                 <sv:property sv:name="jcr:mixinTypes" sv:type="Name" sv:multiple="true">
                   <sv:value>mix:lockable</sv:value>
                 </sv:property>
-                <sv:property sv:name="jcr:createdBy" sv:type="String">
-                  <sv:value>admin</sv:value>
-                </sv:property>
                 <sv:node sv:name="items">
                   <sv:property sv:name="jcr:primaryType" sv:type="Name">
                     <sv:value>mgnl:contentNode</sv:value>
                   </sv:property>
                   <sv:property sv:name="jcr:mixinTypes" sv:type="Name" sv:multiple="true">
                     <sv:value>mix:lockable</sv:value>
-                  </sv:property>
-                  <sv:property sv:name="jcr:createdBy" sv:type="String">
-                    <sv:value>admin</sv:value>
                   </sv:property>
                   <sv:node sv:name="delete">
                     <sv:property sv:name="jcr:primaryType" sv:type="Name">
@@ -429,16 +277,10 @@
                     <sv:property sv:name="jcr:mixinTypes" sv:type="Name" sv:multiple="true">
                       <sv:value>mix:lockable</sv:value>
                     </sv:property>
-                    <sv:property sv:name="jcr:createdBy" sv:type="String">
-                      <sv:value>admin</sv:value>
-                    </sv:property>
                   </sv:node>
                   <sv:node sv:name="editAsset">
                     <sv:property sv:name="jcr:primaryType" sv:type="Name">
                       <sv:value>mgnl:contentNode</sv:value>
-                    </sv:property>
-                    <sv:property sv:name="jcr:createdBy" sv:type="String">
-                      <sv:value>admin</sv:value>
                     </sv:property>
                   </sv:node>
                 </sv:node>
@@ -450,9 +292,6 @@
                 <sv:property sv:name="jcr:mixinTypes" sv:type="Name" sv:multiple="true">
                   <sv:value>mix:lockable</sv:value>
                 </sv:property>
-                <sv:property sv:name="jcr:createdBy" sv:type="String">
-                  <sv:value>admin</sv:value>
-                </sv:property>
                 <sv:node sv:name="items">
                   <sv:property sv:name="jcr:primaryType" sv:type="Name">
                     <sv:value>mgnl:contentNode</sv:value>
@@ -460,18 +299,12 @@
                   <sv:property sv:name="jcr:mixinTypes" sv:type="Name" sv:multiple="true">
                     <sv:value>mix:lockable</sv:value>
                   </sv:property>
-                  <sv:property sv:name="jcr:createdBy" sv:type="String">
-                    <sv:value>admin</sv:value>
-                  </sv:property>
                   <sv:node sv:name="export">
                     <sv:property sv:name="jcr:primaryType" sv:type="Name">
                       <sv:value>mgnl:contentNode</sv:value>
                     </sv:property>
                     <sv:property sv:name="jcr:mixinTypes" sv:type="Name" sv:multiple="true">
                       <sv:value>mix:lockable</sv:value>
-                    </sv:property>
-                    <sv:property sv:name="jcr:createdBy" sv:type="String">
-                      <sv:value>admin</sv:value>
                     </sv:property>
                   </sv:node>
                   <sv:node sv:name="import">
@@ -481,16 +314,10 @@
                     <sv:property sv:name="jcr:mixinTypes" sv:type="Name" sv:multiple="true">
                       <sv:value>mix:lockable</sv:value>
                     </sv:property>
-                    <sv:property sv:name="jcr:createdBy" sv:type="String">
-                      <sv:value>admin</sv:value>
-                    </sv:property>
                   </sv:node>
                   <sv:node sv:name="downloadAsset">
                     <sv:property sv:name="jcr:primaryType" sv:type="Name">
                       <sv:value>mgnl:contentNode</sv:value>
-                    </sv:property>
-                    <sv:property sv:name="jcr:createdBy" sv:type="String">
-                      <sv:value>admin</sv:value>
                     </sv:property>
                   </sv:node>
                 </sv:node>
@@ -500,18 +327,12 @@
               <sv:property sv:name="jcr:primaryType" sv:type="Name">
                 <sv:value>mgnl:contentNode</sv:value>
               </sv:property>
-              <sv:property sv:name="jcr:createdBy" sv:type="String">
-                <sv:value>admin</sv:value>
-              </sv:property>
               <sv:property sv:name="root" sv:type="String">
                 <sv:value>false</sv:value>
               </sv:property>
               <sv:node sv:name="nodeTypes">
                 <sv:property sv:name="jcr:primaryType" sv:type="Name">
                   <sv:value>mgnl:contentNode</sv:value>
-                </sv:property>
-                <sv:property sv:name="jcr:createdBy" sv:type="String">
-                  <sv:value>admin</sv:value>
                 </sv:property>
                 <sv:property sv:name="mgnl-asset" sv:type="String">
                   <sv:value>mgnl:asset</sv:value>
@@ -526,18 +347,12 @@
             <sv:property sv:name="jcr:mixinTypes" sv:type="Name" sv:multiple="true">
               <sv:value>mix:lockable</sv:value>
             </sv:property>
-            <sv:property sv:name="jcr:createdBy" sv:type="String">
-              <sv:value>admin</sv:value>
-            </sv:property>
             <sv:node sv:name="groups">
               <sv:property sv:name="jcr:primaryType" sv:type="Name">
                 <sv:value>mgnl:contentNode</sv:value>
               </sv:property>
               <sv:property sv:name="jcr:mixinTypes" sv:type="Name" sv:multiple="true">
                 <sv:value>mix:lockable</sv:value>
-              </sv:property>
-              <sv:property sv:name="jcr:createdBy" sv:type="String">
-                <sv:value>admin</sv:value>
               </sv:property>
               <sv:node sv:name="addingActions">
                 <sv:property sv:name="jcr:primaryType" sv:type="Name">
@@ -546,9 +361,6 @@
                 <sv:property sv:name="jcr:mixinTypes" sv:type="Name" sv:multiple="true">
                   <sv:value>mix:lockable</sv:value>
                 </sv:property>
-                <sv:property sv:name="jcr:createdBy" sv:type="String">
-                  <sv:value>admin</sv:value>
-                </sv:property>
                 <sv:node sv:name="items">
                   <sv:property sv:name="jcr:primaryType" sv:type="Name">
                     <sv:value>mgnl:contentNode</sv:value>
@@ -556,18 +368,12 @@
                   <sv:property sv:name="jcr:mixinTypes" sv:type="Name" sv:multiple="true">
                     <sv:value>mix:lockable</sv:value>
                   </sv:property>
-                  <sv:property sv:name="jcr:createdBy" sv:type="String">
-                    <sv:value>admin</sv:value>
-                  </sv:property>
                   <sv:node sv:name="delete">
                     <sv:property sv:name="jcr:primaryType" sv:type="Name">
                       <sv:value>mgnl:contentNode</sv:value>
                     </sv:property>
                     <sv:property sv:name="jcr:mixinTypes" sv:type="Name" sv:multiple="true">
                       <sv:value>mix:lockable</sv:value>
-                    </sv:property>
-                    <sv:property sv:name="jcr:createdBy" sv:type="String">
-                      <sv:value>admin</sv:value>
                     </sv:property>
                   </sv:node>
                 </sv:node>
@@ -579,9 +385,6 @@
                 <sv:property sv:name="jcr:mixinTypes" sv:type="Name" sv:multiple="true">
                   <sv:value>mix:lockable</sv:value>
                 </sv:property>
-                <sv:property sv:name="jcr:createdBy" sv:type="String">
-                  <sv:value>admin</sv:value>
-                </sv:property>
                 <sv:node sv:name="items">
                   <sv:property sv:name="jcr:primaryType" sv:type="Name">
                     <sv:value>mgnl:contentNode</sv:value>
@@ -589,18 +392,12 @@
                   <sv:property sv:name="jcr:mixinTypes" sv:type="Name" sv:multiple="true">
                     <sv:value>mix:lockable</sv:value>
                   </sv:property>
-                  <sv:property sv:name="jcr:createdBy" sv:type="String">
-                    <sv:value>admin</sv:value>
-                  </sv:property>
                   <sv:node sv:name="export">
                     <sv:property sv:name="jcr:primaryType" sv:type="Name">
                       <sv:value>mgnl:contentNode</sv:value>
                     </sv:property>
                     <sv:property sv:name="jcr:mixinTypes" sv:type="Name" sv:multiple="true">
                       <sv:value>mix:lockable</sv:value>
-                    </sv:property>
-                    <sv:property sv:name="jcr:createdBy" sv:type="String">
-                      <sv:value>admin</sv:value>
                     </sv:property>
                   </sv:node>
                   <sv:node sv:name="import">
@@ -610,9 +407,6 @@
                     <sv:property sv:name="jcr:mixinTypes" sv:type="Name" sv:multiple="true">
                       <sv:value>mix:lockable</sv:value>
                     </sv:property>
-                    <sv:property sv:name="jcr:createdBy" sv:type="String">
-                      <sv:value>admin</sv:value>
-                    </sv:property>
                   </sv:node>
                   <sv:node sv:name="excelExport">
                     <sv:property sv:name="jcr:primaryType" sv:type="Name">
@@ -620,9 +414,6 @@
                     </sv:property>
                     <sv:property sv:name="jcr:mixinTypes" sv:type="Name" sv:multiple="true">
                       <sv:value>mix:lockable</sv:value>
-                    </sv:property>
-                    <sv:property sv:name="jcr:createdBy" sv:type="String">
-                      <sv:value>admin</sv:value>
                     </sv:property>
                   </sv:node>
                 </sv:node>
@@ -632,18 +423,12 @@
               <sv:property sv:name="jcr:primaryType" sv:type="Name">
                 <sv:value>mgnl:contentNode</sv:value>
               </sv:property>
-              <sv:property sv:name="jcr:createdBy" sv:type="String">
-                <sv:value>admin</sv:value>
-              </sv:property>
               <sv:property sv:name="root" sv:type="String">
                 <sv:value>false</sv:value>
               </sv:property>
               <sv:node sv:name="nodeTypes">
                 <sv:property sv:name="jcr:primaryType" sv:type="Name">
                   <sv:value>mgnl:contentNode</sv:value>
-                </sv:property>
-                <sv:property sv:name="jcr:createdBy" sv:type="String">
-                  <sv:value>admin</sv:value>
                 </sv:property>
                 <sv:property sv:name="mgnl-formNode" sv:type="String">
                   <sv:value>mgnl:formNode</sv:value>
@@ -658,18 +443,12 @@
             <sv:property sv:name="jcr:mixinTypes" sv:type="Name" sv:multiple="true">
               <sv:value>mix:lockable</sv:value>
             </sv:property>
-            <sv:property sv:name="jcr:createdBy" sv:type="String">
-              <sv:value>admin</sv:value>
-            </sv:property>
             <sv:node sv:name="groups">
               <sv:property sv:name="jcr:primaryType" sv:type="Name">
                 <sv:value>mgnl:contentNode</sv:value>
               </sv:property>
               <sv:property sv:name="jcr:mixinTypes" sv:type="Name" sv:multiple="true">
                 <sv:value>mix:lockable</sv:value>
-              </sv:property>
-              <sv:property sv:name="jcr:createdBy" sv:type="String">
-                <sv:value>admin</sv:value>
               </sv:property>
               <sv:node sv:name="addingActions">
                 <sv:property sv:name="jcr:primaryType" sv:type="Name">
@@ -678,9 +457,6 @@
                 <sv:property sv:name="jcr:mixinTypes" sv:type="Name" sv:multiple="true">
                   <sv:value>mix:lockable</sv:value>
                 </sv:property>
-                <sv:property sv:name="jcr:createdBy" sv:type="String">
-                  <sv:value>admin</sv:value>
-                </sv:property>
                 <sv:node sv:name="items">
                   <sv:property sv:name="jcr:primaryType" sv:type="Name">
                     <sv:value>mgnl:contentNode</sv:value>
@@ -688,18 +464,12 @@
                   <sv:property sv:name="jcr:mixinTypes" sv:type="Name" sv:multiple="true">
                     <sv:value>mix:lockable</sv:value>
                   </sv:property>
-                  <sv:property sv:name="jcr:createdBy" sv:type="String">
-                    <sv:value>admin</sv:value>
-                  </sv:property>
                   <sv:node sv:name="delete">
                     <sv:property sv:name="jcr:primaryType" sv:type="Name">
                       <sv:value>mgnl:contentNode</sv:value>
                     </sv:property>
                     <sv:property sv:name="jcr:mixinTypes" sv:type="Name" sv:multiple="true">
                       <sv:value>mix:lockable</sv:value>
-                    </sv:property>
-                    <sv:property sv:name="jcr:createdBy" sv:type="String">
-                      <sv:value>admin</sv:value>
                     </sv:property>
                   </sv:node>
                 </sv:node>
@@ -711,9 +481,6 @@
                 <sv:property sv:name="jcr:mixinTypes" sv:type="Name" sv:multiple="true">
                   <sv:value>mix:lockable</sv:value>
                 </sv:property>
-                <sv:property sv:name="jcr:createdBy" sv:type="String">
-                  <sv:value>admin</sv:value>
-                </sv:property>
                 <sv:node sv:name="items">
                   <sv:property sv:name="jcr:primaryType" sv:type="Name">
                     <sv:value>mgnl:contentNode</sv:value>
@@ -721,18 +488,12 @@
                   <sv:property sv:name="jcr:mixinTypes" sv:type="Name" sv:multiple="true">
                     <sv:value>mix:lockable</sv:value>
                   </sv:property>
-                  <sv:property sv:name="jcr:createdBy" sv:type="String">
-                    <sv:value>admin</sv:value>
-                  </sv:property>
                   <sv:node sv:name="export">
                     <sv:property sv:name="jcr:primaryType" sv:type="Name">
                       <sv:value>mgnl:contentNode</sv:value>
                     </sv:property>
                     <sv:property sv:name="jcr:mixinTypes" sv:type="Name" sv:multiple="true">
                       <sv:value>mix:lockable</sv:value>
-                    </sv:property>
-                    <sv:property sv:name="jcr:createdBy" sv:type="String">
-                      <sv:value>admin</sv:value>
                     </sv:property>
                   </sv:node>
                   <sv:node sv:name="import">
@@ -742,9 +503,6 @@
                     <sv:property sv:name="jcr:mixinTypes" sv:type="Name" sv:multiple="true">
                       <sv:value>mix:lockable</sv:value>
                     </sv:property>
-                    <sv:property sv:name="jcr:createdBy" sv:type="String">
-                      <sv:value>admin</sv:value>
-                    </sv:property>
                   </sv:node>
                   <sv:node sv:name="excelExport">
                     <sv:property sv:name="jcr:primaryType" sv:type="Name">
@@ -752,9 +510,6 @@
                     </sv:property>
                     <sv:property sv:name="jcr:mixinTypes" sv:type="Name" sv:multiple="true">
                       <sv:value>mix:lockable</sv:value>
-                    </sv:property>
-                    <sv:property sv:name="jcr:createdBy" sv:type="String">
-                      <sv:value>admin</sv:value>
                     </sv:property>
                   </sv:node>
                 </sv:node>
@@ -764,18 +519,12 @@
               <sv:property sv:name="jcr:primaryType" sv:type="Name">
                 <sv:value>mgnl:contentNode</sv:value>
               </sv:property>
-              <sv:property sv:name="jcr:createdBy" sv:type="String">
-                <sv:value>admin</sv:value>
-              </sv:property>
               <sv:property sv:name="root" sv:type="String">
                 <sv:value>false</sv:value>
               </sv:property>
               <sv:node sv:name="nodeTypes">
                 <sv:property sv:name="jcr:primaryType" sv:type="Name">
                   <sv:value>mgnl:contentNode</sv:value>
-                </sv:property>
-                <sv:property sv:name="jcr:createdBy" sv:type="String">
-                  <sv:value>admin</sv:value>
                 </sv:property>
                 <sv:property sv:name="mgnl-formEntryNode" sv:type="String">
                   <sv:value>mgnl:formEntryNode</sv:value>
@@ -790,18 +539,12 @@
             <sv:property sv:name="jcr:mixinTypes" sv:type="Name" sv:multiple="true">
               <sv:value>mix:lockable</sv:value>
             </sv:property>
-            <sv:property sv:name="jcr:createdBy" sv:type="String">
-              <sv:value>admin</sv:value>
-            </sv:property>
             <sv:node sv:name="groups">
               <sv:property sv:name="jcr:primaryType" sv:type="Name">
                 <sv:value>mgnl:contentNode</sv:value>
               </sv:property>
               <sv:property sv:name="jcr:mixinTypes" sv:type="Name" sv:multiple="true">
                 <sv:value>mix:lockable</sv:value>
-              </sv:property>
-              <sv:property sv:name="jcr:createdBy" sv:type="String">
-                <sv:value>admin</sv:value>
               </sv:property>
               <sv:node sv:name="addingActions">
                 <sv:property sv:name="jcr:primaryType" sv:type="Name">
@@ -810,9 +553,6 @@
                 <sv:property sv:name="jcr:mixinTypes" sv:type="Name" sv:multiple="true">
                   <sv:value>mix:lockable</sv:value>
                 </sv:property>
-                <sv:property sv:name="jcr:createdBy" sv:type="String">
-                  <sv:value>admin</sv:value>
-                </sv:property>
                 <sv:node sv:name="items">
                   <sv:property sv:name="jcr:primaryType" sv:type="Name">
                     <sv:value>mgnl:contentNode</sv:value>
@@ -820,18 +560,12 @@
                   <sv:property sv:name="jcr:mixinTypes" sv:type="Name" sv:multiple="true">
                     <sv:value>mix:lockable</sv:value>
                   </sv:property>
-                  <sv:property sv:name="jcr:createdBy" sv:type="String">
-                    <sv:value>admin</sv:value>
-                  </sv:property>
                   <sv:node sv:name="delete">
                     <sv:property sv:name="jcr:primaryType" sv:type="Name">
                       <sv:value>mgnl:contentNode</sv:value>
                     </sv:property>
                     <sv:property sv:name="jcr:mixinTypes" sv:type="Name" sv:multiple="true">
                       <sv:value>mix:lockable</sv:value>
-                    </sv:property>
-                    <sv:property sv:name="jcr:createdBy" sv:type="String">
-                      <sv:value>admin</sv:value>
                     </sv:property>
                   </sv:node>
                 </sv:node>
@@ -843,9 +577,6 @@
                 <sv:property sv:name="jcr:mixinTypes" sv:type="Name" sv:multiple="true">
                   <sv:value>mix:lockable</sv:value>
                 </sv:property>
-                <sv:property sv:name="jcr:createdBy" sv:type="String">
-                  <sv:value>admin</sv:value>
-                </sv:property>
                 <sv:node sv:name="items">
                   <sv:property sv:name="jcr:primaryType" sv:type="Name">
                     <sv:value>mgnl:contentNode</sv:value>
@@ -853,18 +584,12 @@
                   <sv:property sv:name="jcr:mixinTypes" sv:type="Name" sv:multiple="true">
                     <sv:value>mix:lockable</sv:value>
                   </sv:property>
-                  <sv:property sv:name="jcr:createdBy" sv:type="String">
-                    <sv:value>admin</sv:value>
-                  </sv:property>
                   <sv:node sv:name="export">
                     <sv:property sv:name="jcr:primaryType" sv:type="Name">
                       <sv:value>mgnl:contentNode</sv:value>
                     </sv:property>
                     <sv:property sv:name="jcr:mixinTypes" sv:type="Name" sv:multiple="true">
                       <sv:value>mix:lockable</sv:value>
-                    </sv:property>
-                    <sv:property sv:name="jcr:createdBy" sv:type="String">
-                      <sv:value>admin</sv:value>
                     </sv:property>
                   </sv:node>
                   <sv:node sv:name="import">
@@ -874,9 +599,6 @@
                     <sv:property sv:name="jcr:mixinTypes" sv:type="Name" sv:multiple="true">
                       <sv:value>mix:lockable</sv:value>
                     </sv:property>
-                    <sv:property sv:name="jcr:createdBy" sv:type="String">
-                      <sv:value>admin</sv:value>
-                    </sv:property>
                   </sv:node>
                 </sv:node>
               </sv:node>
@@ -885,18 +607,12 @@
               <sv:property sv:name="jcr:primaryType" sv:type="Name">
                 <sv:value>mgnl:contentNode</sv:value>
               </sv:property>
-              <sv:property sv:name="jcr:createdBy" sv:type="String">
-                <sv:value>admin</sv:value>
-              </sv:property>
               <sv:property sv:name="root" sv:type="String">
                 <sv:value>true</sv:value>
               </sv:property>
               <sv:node sv:name="nodeTypes">
                 <sv:property sv:name="jcr:primaryType" sv:type="Name">
                   <sv:value>mgnl:contentNode</sv:value>
-                </sv:property>
-                <sv:property sv:name="jcr:createdBy" sv:type="String">
-                  <sv:value>admin</sv:value>
                 </sv:property>
                 <sv:property sv:name="mgnl-folder" sv:type="String">
                   <sv:value>mgnl:folder</sv:value>
@@ -911,18 +627,12 @@
             <sv:property sv:name="jcr:mixinTypes" sv:type="Name" sv:multiple="true">
               <sv:value>mix:lockable</sv:value>
             </sv:property>
-            <sv:property sv:name="jcr:createdBy" sv:type="String">
-              <sv:value>admin</sv:value>
-            </sv:property>
             <sv:node sv:name="groups">
               <sv:property sv:name="jcr:primaryType" sv:type="Name">
                 <sv:value>mgnl:contentNode</sv:value>
               </sv:property>
               <sv:property sv:name="jcr:mixinTypes" sv:type="Name" sv:multiple="true">
                 <sv:value>mix:lockable</sv:value>
-              </sv:property>
-              <sv:property sv:name="jcr:createdBy" sv:type="String">
-                <sv:value>admin</sv:value>
               </sv:property>
               <sv:node sv:name="addingActions">
                 <sv:property sv:name="jcr:primaryType" sv:type="Name">
@@ -931,18 +641,12 @@
                 <sv:property sv:name="jcr:mixinTypes" sv:type="Name" sv:multiple="true">
                   <sv:value>mix:lockable</sv:value>
                 </sv:property>
-                <sv:property sv:name="jcr:createdBy" sv:type="String">
-                  <sv:value>admin</sv:value>
-                </sv:property>
                 <sv:node sv:name="items">
                   <sv:property sv:name="jcr:primaryType" sv:type="Name">
                     <sv:value>mgnl:contentNode</sv:value>
                   </sv:property>
                   <sv:property sv:name="jcr:mixinTypes" sv:type="Name" sv:multiple="true">
                     <sv:value>mix:lockable</sv:value>
-                  </sv:property>
-                  <sv:property sv:name="jcr:createdBy" sv:type="String">
-                    <sv:value>admin</sv:value>
                   </sv:property>
                   <sv:node sv:name="editProperty">
                     <sv:property sv:name="jcr:primaryType" sv:type="Name">
@@ -951,9 +655,6 @@
                     <sv:property sv:name="jcr:mixinTypes" sv:type="Name" sv:multiple="true">
                       <sv:value>mix:lockable</sv:value>
                     </sv:property>
-                    <sv:property sv:name="jcr:createdBy" sv:type="String">
-                      <sv:value>admin</sv:value>
-                    </sv:property>
                   </sv:node>
                 </sv:node>
               </sv:node>
@@ -961,9 +662,6 @@
             <sv:node sv:name="availability">
               <sv:property sv:name="jcr:primaryType" sv:type="Name">
                 <sv:value>mgnl:contentNode</sv:value>
-              </sv:property>
-              <sv:property sv:name="jcr:createdBy" sv:type="String">
-                <sv:value>admin</sv:value>
               </sv:property>
               <sv:property sv:name="properties" sv:type="String">
                 <sv:value>true</sv:value>
@@ -985,18 +683,12 @@
         <sv:property sv:name="dropConstraintClass" sv:type="String">
           <sv:value>info.magnolia.ui.workbench.tree.drop.NodesAndPropsDropConstraint</sv:value>
         </sv:property>
-        <sv:property sv:name="jcr:createdBy" sv:type="String">
-          <sv:value>admin</sv:value>
-        </sv:property>
         <sv:node sv:name="contentViews">
           <sv:property sv:name="jcr:primaryType" sv:type="Name">
             <sv:value>mgnl:contentNode</sv:value>
           </sv:property>
           <sv:property sv:name="jcr:mixinTypes" sv:type="Name" sv:multiple="true">
             <sv:value>mix:lockable</sv:value>
-          </sv:property>
-          <sv:property sv:name="jcr:createdBy" sv:type="String">
-            <sv:value>admin</sv:value>
           </sv:property>
           <sv:node sv:name="search">
             <sv:property sv:name="jcr:primaryType" sv:type="Name">
@@ -1008,18 +700,12 @@
             <sv:property sv:name="class" sv:type="String">
               <sv:value>info.magnolia.ui.workbench.search.SearchPresenterDefinition</sv:value>
             </sv:property>
-            <sv:property sv:name="jcr:createdBy" sv:type="String">
-              <sv:value>admin</sv:value>
-            </sv:property>
             <sv:node sv:name="columns">
               <sv:property sv:name="jcr:primaryType" sv:type="Name">
                 <sv:value>mgnl:contentNode</sv:value>
               </sv:property>
               <sv:property sv:name="extends" sv:type="String">
                 <sv:value>../../tree/columns</sv:value>
-              </sv:property>
-              <sv:property sv:name="jcr:createdBy" sv:type="String">
-                <sv:value>admin</sv:value>
               </sv:property>
             </sv:node>
           </sv:node>
@@ -1030,18 +716,12 @@
             <sv:property sv:name="class" sv:type="String">
               <sv:value>info.magnolia.ui.workbench.tree.TreePresenterDefinition</sv:value>
             </sv:property>
-            <sv:property sv:name="jcr:createdBy" sv:type="String">
-              <sv:value>admin</sv:value>
-            </sv:property>
             <sv:node sv:name="columns">
               <sv:property sv:name="jcr:primaryType" sv:type="Name">
                 <sv:value>mgnl:contentNode</sv:value>
               </sv:property>
               <sv:property sv:name="jcr:mixinTypes" sv:type="Name" sv:multiple="true">
                 <sv:value>mix:lockable</sv:value>
-              </sv:property>
-              <sv:property sv:name="jcr:createdBy" sv:type="String">
-                <sv:value>admin</sv:value>
               </sv:property>
               <sv:node sv:name="name">
                 <sv:property sv:name="jcr:primaryType" sv:type="Name">
@@ -1055,9 +735,6 @@
                 </sv:property>
                 <sv:property sv:name="expandRatio" sv:type="Double">
                   <sv:value>2.0</sv:value>
-                </sv:property>
-                <sv:property sv:name="jcr:createdBy" sv:type="String">
-                  <sv:value>admin</sv:value>
                 </sv:property>
                 <sv:property sv:name="propertyName" sv:type="String">
                   <sv:value>jcrName</sv:value>
@@ -1082,9 +759,6 @@
                 <sv:property sv:name="expandRatio" sv:type="Double">
                   <sv:value>2.0</sv:value>
                 </sv:property>
-                <sv:property sv:name="jcr:createdBy" sv:type="String">
-                  <sv:value>admin</sv:value>
-                </sv:property>
                 <sv:property sv:name="propertyName" sv:type="String">
                   <sv:value>value</sv:value>
                 </sv:property>
@@ -1101,9 +775,6 @@
                 </sv:property>
                 <sv:property sv:name="formatterClass" sv:type="String">
                   <sv:value>info.magnolia.ui.workbench.column.DateColumnFormatter</sv:value>
-                </sv:property>
-                <sv:property sv:name="jcr:createdBy" sv:type="String">
-                  <sv:value>admin</sv:value>
                 </sv:property>
                 <sv:property sv:name="propertyName" sv:type="String">
                   <sv:value>mgnl:lastModified</sv:value>
@@ -1124,18 +795,12 @@
             <sv:property sv:name="class" sv:type="String">
               <sv:value>info.magnolia.ui.workbench.list.ListPresenterDefinition</sv:value>
             </sv:property>
-            <sv:property sv:name="jcr:createdBy" sv:type="String">
-              <sv:value>admin</sv:value>
-            </sv:property>
             <sv:node sv:name="columns">
               <sv:property sv:name="jcr:primaryType" sv:type="Name">
                 <sv:value>mgnl:contentNode</sv:value>
               </sv:property>
               <sv:property sv:name="jcr:mixinTypes" sv:type="Name" sv:multiple="true">
                 <sv:value>mix:lockable</sv:value>
-              </sv:property>
-              <sv:property sv:name="jcr:createdBy" sv:type="String">
-                <sv:value>admin</sv:value>
               </sv:property>
               <sv:node sv:name="name">
                 <sv:property sv:name="jcr:primaryType" sv:type="Name">
@@ -1149,9 +814,6 @@
                 </sv:property>
                 <sv:property sv:name="expandRatio" sv:type="Double">
                   <sv:value>2.0</sv:value>
-                </sv:property>
-                <sv:property sv:name="jcr:createdBy" sv:type="String">
-                  <sv:value>admin</sv:value>
                 </sv:property>
                 <sv:property sv:name="propertyName" sv:type="String">
                   <sv:value>jcrName</sv:value>
@@ -1173,9 +835,6 @@
                 <sv:property sv:name="expandRatio" sv:type="Double">
                   <sv:value>2.0</sv:value>
                 </sv:property>
-                <sv:property sv:name="jcr:createdBy" sv:type="String">
-                  <sv:value>admin</sv:value>
-                </sv:property>
                 <sv:property sv:name="propertyName" sv:type="String">
                   <sv:value>value</sv:value>
                 </sv:property>
@@ -1192,9 +851,6 @@
                 </sv:property>
                 <sv:property sv:name="formatterClass" sv:type="String">
                   <sv:value>info.magnolia.ui.workbench.column.DateColumnFormatter</sv:value>
-                </sv:property>
-                <sv:property sv:name="jcr:createdBy" sv:type="String">
-                  <sv:value>admin</sv:value>
                 </sv:property>
                 <sv:property sv:name="propertyName" sv:type="String">
                   <sv:value>mgnl:lastModified</sv:value>
@@ -1220,9 +876,6 @@
         <sv:property sv:name="includeProperties" sv:type="String">
           <sv:value>true</sv:value>
         </sv:property>
-        <sv:property sv:name="jcr:createdBy" sv:type="String">
-          <sv:value>admin</sv:value>
-        </sv:property>
         <sv:property sv:name="rootPath" sv:type="String">
           <sv:value>/</sv:value>
         </sv:property>
@@ -1236,9 +889,6 @@
           <sv:property sv:name="jcr:mixinTypes" sv:type="Name" sv:multiple="true">
             <sv:value>mix:lockable</sv:value>
           </sv:property>
-          <sv:property sv:name="jcr:createdBy" sv:type="String">
-            <sv:value>admin</sv:value>
-          </sv:property>
           <sv:node sv:name="mainNodeType">
             <sv:property sv:name="jcr:primaryType" sv:type="Name">
               <sv:value>mgnl:contentNode</sv:value>
@@ -1248,9 +898,6 @@
             </sv:property>
             <sv:property sv:name="icon" sv:type="String">
               <sv:value>icon-forums-thread</sv:value>
-            </sv:property>
-            <sv:property sv:name="jcr:createdBy" sv:type="String">
-              <sv:value>admin</sv:value>
             </sv:property>
             <sv:property sv:name="name" sv:type="String">
               <sv:value>mgnl:formNode</sv:value>
@@ -1266,9 +913,6 @@
             <sv:property sv:name="icon" sv:type="String">
               <sv:value>icon-forums-article</sv:value>
             </sv:property>
-            <sv:property sv:name="jcr:createdBy" sv:type="String">
-              <sv:value>admin</sv:value>
-            </sv:property>
             <sv:property sv:name="name" sv:type="String">
               <sv:value>mgnl:formEntryNode</sv:value>
             </sv:property>
@@ -1283,9 +927,6 @@
             <sv:property sv:name="icon" sv:type="String">
               <sv:value>icon-folder</sv:value>
             </sv:property>
-            <sv:property sv:name="jcr:createdBy" sv:type="String">
-              <sv:value>admin</sv:value>
-            </sv:property>
             <sv:property sv:name="name" sv:type="String">
               <sv:value>mgnl:folder</sv:value>
             </sv:property>
@@ -1299,9 +940,6 @@
             </sv:property>
             <sv:property sv:name="icon" sv:type="String">
               <sv:value>icon-file</sv:value>
-            </sv:property>
-            <sv:property sv:name="jcr:createdBy" sv:type="String">
-              <sv:value>admin</sv:value>
             </sv:property>
             <sv:property sv:name="name" sv:type="String">
               <sv:value>mgnl:asset</sv:value>
@@ -1319,9 +957,6 @@
         <sv:property sv:name="imageProviderClass" sv:type="String">
           <sv:value>info.magnolia.ui.imageprovider.DefaultImageProvider</sv:value>
         </sv:property>
-        <sv:property sv:name="jcr:createdBy" sv:type="String">
-          <sv:value>admin</sv:value>
-        </sv:property>
         <sv:property sv:name="originalImageNodeName" sv:type="String">
           <sv:value>jcr:content</sv:value>
         </sv:property>
@@ -1337,9 +972,6 @@
       <sv:property sv:name="class" sv:type="String">
         <sv:value>info.magnolia.ui.contentapp.detail.DetailSubAppDescriptor</sv:value>
       </sv:property>
-      <sv:property sv:name="jcr:createdBy" sv:type="String">
-        <sv:value>admin</sv:value>
-      </sv:property>
       <sv:property sv:name="subAppClass" sv:type="String">
         <sv:value>info.magnolia.dam.app.assets.editor.AssetDetailSubApp</sv:value>
       </sv:property>
@@ -1350,18 +982,12 @@
         <sv:property sv:name="jcr:mixinTypes" sv:type="Name" sv:multiple="true">
           <sv:value>mix:lockable</sv:value>
         </sv:property>
-        <sv:property sv:name="jcr:createdBy" sv:type="String">
-          <sv:value>admin</sv:value>
-        </sv:property>
         <sv:node sv:name="form">
           <sv:property sv:name="jcr:primaryType" sv:type="Name">
             <sv:value>mgnl:contentNode</sv:value>
           </sv:property>
           <sv:property sv:name="jcr:mixinTypes" sv:type="Name" sv:multiple="true">
             <sv:value>mix:lockable</sv:value>
-          </sv:property>
-          <sv:property sv:name="jcr:createdBy" sv:type="String">
-            <sv:value>admin</sv:value>
           </sv:property>
           <sv:node sv:name="tabs">
             <sv:property sv:name="jcr:primaryType" sv:type="Name">
@@ -1370,9 +996,6 @@
             <sv:property sv:name="jcr:mixinTypes" sv:type="Name" sv:multiple="true">
               <sv:value>mix:lockable</sv:value>
             </sv:property>
-            <sv:property sv:name="jcr:createdBy" sv:type="String">
-              <sv:value>admin</sv:value>
-            </sv:property>
             <sv:node sv:name="asset">
               <sv:property sv:name="jcr:primaryType" sv:type="Name">
                 <sv:value>mgnl:contentNode</sv:value>
@@ -1380,18 +1003,12 @@
               <sv:property sv:name="jcr:mixinTypes" sv:type="Name" sv:multiple="true">
                 <sv:value>mix:lockable</sv:value>
               </sv:property>
-              <sv:property sv:name="jcr:createdBy" sv:type="String">
-                <sv:value>admin</sv:value>
-              </sv:property>
               <sv:node sv:name="fields">
                 <sv:property sv:name="jcr:primaryType" sv:type="Name">
                   <sv:value>mgnl:contentNode</sv:value>
                 </sv:property>
                 <sv:property sv:name="jcr:mixinTypes" sv:type="Name" sv:multiple="true">
                   <sv:value>mix:lockable</sv:value>
-                </sv:property>
-                <sv:property sv:name="jcr:createdBy" sv:type="String">
-                  <sv:value>admin</sv:value>
                 </sv:property>
                 <sv:node sv:name="resource">
                   <sv:property sv:name="jcr:primaryType" sv:type="Name">
@@ -1412,9 +1029,6 @@
                   <sv:property sv:name="editFileName" sv:type="String">
                     <sv:value>true</sv:value>
                   </sv:property>
-                  <sv:property sv:name="jcr:createdBy" sv:type="String">
-                    <sv:value>admin</sv:value>
-                  </sv:property>
                   <sv:property sv:name="required" sv:type="String">
                     <sv:value>true</sv:value>
                   </sv:property>
@@ -1428,9 +1042,6 @@
                   </sv:property>
                   <sv:property sv:name="class" sv:type="String">
                     <sv:value>info.magnolia.ui.form.field.definition.TextFieldDefinition</sv:value>
-                  </sv:property>
-                  <sv:property sv:name="jcr:createdBy" sv:type="String">
-                    <sv:value>admin</sv:value>
                   </sv:property>
                   <sv:property sv:name="name" sv:type="String">
                     <sv:value>jcr:uuid</sv:value>
@@ -1450,9 +1061,6 @@
           <sv:property sv:name="jcr:mixinTypes" sv:type="Name" sv:multiple="true">
             <sv:value>mix:lockable</sv:value>
           </sv:property>
-          <sv:property sv:name="jcr:createdBy" sv:type="String">
-            <sv:value>admin</sv:value>
-          </sv:property>
           <sv:node sv:name="commit">
             <sv:property sv:name="jcr:primaryType" sv:type="Name">
               <sv:value>mgnl:contentNode</sv:value>
@@ -1460,16 +1068,10 @@
             <sv:property sv:name="jcr:mixinTypes" sv:type="Name" sv:multiple="true">
               <sv:value>mix:lockable</sv:value>
             </sv:property>
-            <sv:property sv:name="jcr:createdBy" sv:type="String">
-              <sv:value>admin</sv:value>
-            </sv:property>
           </sv:node>
           <sv:node sv:name="cancel">
             <sv:property sv:name="jcr:primaryType" sv:type="Name">
               <sv:value>mgnl:contentNode</sv:value>
-            </sv:property>
-            <sv:property sv:name="jcr:createdBy" sv:type="String">
-              <sv:value>admin</sv:value>
             </sv:property>
           </sv:node>
         </sv:node>
@@ -1483,9 +1085,6 @@
           <sv:property sv:name="icon" sv:type="String">
             <sv:value>/.resources/icons/24/document_plain_earth.gif</sv:value>
           </sv:property>
-          <sv:property sv:name="jcr:createdBy" sv:type="String">
-            <sv:value>admin</sv:value>
-          </sv:property>
           <sv:property sv:name="name" sv:type="String">
             <sv:value>mgnl:asset</sv:value>
           </sv:property>
@@ -1498,9 +1097,6 @@
         <sv:property sv:name="jcr:mixinTypes" sv:type="Name" sv:multiple="true">
           <sv:value>mix:lockable</sv:value>
         </sv:property>
-        <sv:property sv:name="jcr:createdBy" sv:type="String">
-          <sv:value>admin</sv:value>
-        </sv:property>
         <sv:node sv:name="commit">
           <sv:property sv:name="jcr:primaryType" sv:type="Name">
             <sv:value>mgnl:contentNode</sv:value>
@@ -1511,15 +1107,9 @@
           <sv:property sv:name="class" sv:type="String">
             <sv:value>info.magnolia.dam.app.assets.form.action.SaveAssetFormActionDefinition</sv:value>
           </sv:property>
-          <sv:property sv:name="jcr:createdBy" sv:type="String">
-            <sv:value>admin</sv:value>
-          </sv:property>
           <sv:node sv:name="availability">
             <sv:property sv:name="jcr:primaryType" sv:type="Name">
               <sv:value>mgnl:contentNode</sv:value>
-            </sv:property>
-            <sv:property sv:name="jcr:createdBy" sv:type="String">
-              <sv:value>admin</sv:value>
             </sv:property>
             <sv:node sv:name="rules">
               <sv:property sv:name="jcr:primaryType" sv:type="Name">
@@ -1527,9 +1117,6 @@
               </sv:property>
               <sv:property sv:name="jcr:mixinTypes" sv:type="Name" sv:multiple="true">
                 <sv:value>mix:lockable</sv:value>
-              </sv:property>
-              <sv:property sv:name="jcr:createdBy" sv:type="String">
-                <sv:value>admin</sv:value>
               </sv:property>
               <sv:node sv:name="IsNotVersionedRule">
                 <sv:property sv:name="jcr:primaryType" sv:type="Name">
@@ -1540,9 +1127,6 @@
                 </sv:property>
                 <sv:property sv:name="implementationClass" sv:type="String">
                   <sv:value>info.magnolia.ui.framework.availability.IsNotVersionedRule</sv:value>
-                </sv:property>
-                <sv:property sv:name="jcr:createdBy" sv:type="String">
-                  <sv:value>admin</sv:value>
                 </sv:property>
               </sv:node>
             </sv:node>
@@ -1558,9 +1142,6 @@
           <sv:property sv:name="class" sv:type="String">
             <sv:value>info.magnolia.ui.form.action.CancelFormActionDefinition</sv:value>
           </sv:property>
-          <sv:property sv:name="jcr:createdBy" sv:type="String">
-            <sv:value>admin</sv:value>
-          </sv:property>
         </sv:node>
       </sv:node>
       <sv:node sv:name="contentConnector">
@@ -1570,10 +1151,8 @@
         <sv:property sv:name="extends" sv:type="String">
           <sv:value>../../browser/contentConnector</sv:value>
         </sv:property>
-        <sv:property sv:name="jcr:createdBy" sv:type="String">
-          <sv:value>admin</sv:value>
-        </sv:property>
       </sv:node>
     </sv:node>
   </sv:node>
 </sv:node>
+

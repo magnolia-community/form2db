@@ -4,7 +4,7 @@
     <parent>
         <groupId>info.magnolia.maven.poms-forge</groupId>
         <artifactId>magnolia-parent-pom-forge</artifactId>
-        <version>31</version>
+        <version>34</version>
     </parent>
     <groupId>de.marvinkerkhoff</groupId>
     <artifactId>form2db-app</artifactId>

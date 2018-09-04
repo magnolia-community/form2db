@@ -9,6 +9,7 @@
     <nodeType name="mgnl:formEntryNode" isMixin="false" hasOrderableChildNodes="true" primaryItemName="">
         <supertypes>
             <supertype>mgnl:content</supertype>
+			<supertype>mgnl:visitorReference</supertype>
         </supertypes>
     </nodeType>
 </nodeTypes>

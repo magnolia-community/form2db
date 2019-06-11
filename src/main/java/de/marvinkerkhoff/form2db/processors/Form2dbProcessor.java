@@ -56,7 +56,7 @@ public class Form2dbProcessor extends AbstractFormProcessor {
             Node page = getTemplatingFunctions().page(componentNode);
             if (saveToJcr && page != null) {
                 String pagePath = page.getPath();
-                String formNodePath = addOrGetBaseStructure(pagePath, getString(componentNode, "formName", "formName"));
+                String formNodePath = addOrGetBaseStructure(pagePath, getString(componentNode, "formName", "formName").trim());
 
                 if (formNodePath != null) {
                     createFormEntry(parameters, formNodePath);

@@ -4,7 +4,7 @@ import com.google.common.collect.Lists;
 import de.marvinkerkhoff.form2db.Form2db;
 import de.marvinkerkhoff.form2db.jcr.JcrSearchUtils;
 import de.marvinkerkhoff.form2db.processors.Form2dbProcessor;
-import info.magnolia.cms.core.Path;
+import info.magnolia.cms.core.FileSystemHelper;
 import info.magnolia.cms.util.QueryUtil;
 import info.magnolia.jcr.util.NodeTypes;
 import info.magnolia.objectfactory.Components;
@@ -53,7 +53,7 @@ public class ExcelCreator {
     private static final int HEADER_ROW_NUMBER = 0;
     private static final Collator COLLATOR = Collator.getInstance(Locale.GERMAN);
 
-    private final File file = File.createTempFile("excel-form2db", ".xlsx", Path.getTempDirectory());
+    private final File file = File.createTempFile("excel-form2db", ".xlsx", Components.getComponent(FileSystemHelper.class).getTempDirectory());
     private CellStyle headerStyle;
     private Form2db form2db;
 
@@ -77,7 +77,7 @@ public class ExcelCreator {
     private void initHeaderStyle(final Workbook wb) {
         headerStyle = wb.createCellStyle();
         Font font = wb.createFont();
-        font.setBoldweight(Font.BOLDWEIGHT_BOLD);
+        font.setBold(true);
         headerStyle.setFont(font);
     }
 

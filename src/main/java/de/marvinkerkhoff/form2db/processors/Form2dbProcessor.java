@@ -6,9 +6,9 @@ import info.magnolia.cms.beans.runtime.MultipartForm;
 import info.magnolia.context.MgnlContext;
 import info.magnolia.dam.jcr.AssetNodeTypes.Asset;
 import info.magnolia.dam.jcr.AssetNodeTypes.AssetResource;
+import info.magnolia.jcr.util.NodeNameHelper;
 import info.magnolia.jcr.util.NodeTypes;
 import info.magnolia.module.form.processors.AbstractFormProcessor;
-import info.magnolia.module.form.processors.FormProcessorFailedException;
 import info.magnolia.objectfactory.Components;
 import info.magnolia.templating.functions.TemplatingFunctions;
 import org.slf4j.Logger;
@@ -26,8 +26,6 @@ import java.util.Map;
 import static de.marvinkerkhoff.form2db.Form2db.NT_FORM;
 import static de.marvinkerkhoff.form2db.Form2db.NT_FORM_ENTRY;
 import static info.magnolia.cms.beans.config.MIMEMapping.getMIMETypeOrDefault;
-import static info.magnolia.cms.core.Path.getUniqueLabel;
-import static info.magnolia.cms.core.Path.getValidatedLabel;
 import static info.magnolia.context.MgnlContext.doInSystemContext;
 import static info.magnolia.jcr.util.NodeUtil.createPath;
 import static info.magnolia.jcr.util.PropertyUtil.getBoolean;
@@ -52,8 +50,7 @@ public class Form2dbProcessor extends AbstractFormProcessor {
     private Form2db form2db;
 
     @Override
-    protected void internalProcess(Node componentNode, Map<String, Object> parameters)
-        throws FormProcessorFailedException {
+    protected void internalProcess(Node componentNode, Map<String, Object> parameters) {
         try {
             boolean saveToJcr = getBoolean(componentNode, "saveToJcr", false);
             Node page = getTemplatingFunctions().page(componentNode);
@@ -72,21 +69,19 @@ public class Form2dbProcessor extends AbstractFormProcessor {
 
     private void createFormEntry(final Map<String, Object> parameters, final String formNodePath) throws RepositoryException {
         final Map<String, Document> docs = getAttachments();
-        doInSystemContext(new MgnlContext.Op<Boolean, RepositoryException>() {
-            @Override
-            public Boolean exec() throws RepositoryException {
-                Session jcrSession = MgnlContext.getJCRSession(Form2db.WORKSPACE);
-                Date now = new Date();
-                String entryName = SimpleDateFormat.getDateTimeInstance(MEDIUM, MEDIUM, GERMAN).format(now);
-                Node formNode = jcrSession.getNode(formNodePath);
-                entryName = getUniqueLabel(formNode, getValidatedLabel(entryName));
-                Node entry = formNode.addNode(entryName, NT_FORM_ENTRY);
-                setProperty(entry, "created", now);
-                storeFields(entry, parameters);
-                storeAttachments(entry, docs);
-                jcrSession.save();
-                return true;
-            }
+        doInSystemContext(() -> {
+            Session jcrSession = MgnlContext.getJCRSession(Form2db.WORKSPACE);
+            Date now = new Date();
+            String entryName = SimpleDateFormat.getDateTimeInstance(MEDIUM, MEDIUM, GERMAN).format(now);
+            Node formNode = jcrSession.getNode(formNodePath);
+            NodeNameHelper nodeNameHelper = Components.getComponent(NodeNameHelper.class);
+            entryName = nodeNameHelper.getUniqueName(formNode, nodeNameHelper.getValidatedName(entryName));
+            Node entry = formNode.addNode(entryName, NT_FORM_ENTRY);
+            setProperty(entry, "created", now);
+            storeFields(entry, parameters);
+            storeAttachments(entry, docs);
+            jcrSession.save();
+            return true;
         });
     }
 
@@ -125,28 +120,30 @@ public class Form2dbProcessor extends AbstractFormProcessor {
     }
 
     private String addOrGetBaseStructure(final String pagePath, final String formName) throws RepositoryException {
-        return MgnlContext.doInSystemContext(new MgnlContext.Op<String, RepositoryException>() {
-            @Override
-            public String exec() throws RepositoryException {
-                Node formNode = null;
-                Session jcrSession = MgnlContext.getJCRSession(Form2db.WORKSPACE);
+        return MgnlContext.doInSystemContext(() -> {
+            Node formNode = null;
+            Session jcrSession = MgnlContext.getJCRSession(Form2db.WORKSPACE);
 
-                String basePath = removeStart(pagePath, "/");
-                if (useFlatStructure()) {
-                    basePath = substringBefore(basePath, "/");
-                }
-
-                Node pageNode = createPath(jcrSession.getRootNode(), basePath, NodeTypes.Folder.NAME, true);
-                if (pageNode != null) {
-                    formNode = createPath(pageNode, getValidatedLabel(formName), NT_FORM, true);
-                }
-                return formNode != null ? formNode.getPath() : null;
+            String basePath = removeStart(pagePath, "/");
+            if (useFlatStructure()) {
+                basePath = substringBefore(basePath, "/");
             }
+
+            Node pageNode = createPath(jcrSession.getRootNode(), basePath, NodeTypes.Folder.NAME, true);
+            if (pageNode != null) {
+                NodeNameHelper nodeNameHelper = Components.getComponent(NodeNameHelper.class);
+                formNode = createPath(pageNode, nodeNameHelper.getValidatedName(formName), NT_FORM, true);
+            }
+            return formNode != null ? formNode.getPath() : null;
         });
     }
 
+    /**
+     * get any possible attachments.
+     *
+     * @return map with attachments or null
+     */
     private Map<String, Document> getAttachments() {
-        // get any possible attachment
         if (MgnlContext.getPostedForm() != null) {
             MultipartForm form = MgnlContext.getPostedForm();
             return form.getDocuments();

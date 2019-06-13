@@ -1,0 +1,11 @@
+language: java
+jdk: oraclejdk8
+before_install:
+- cd /tmp
+- mvn org.sonatype.plugins:nexus-m2settings-maven-plugin:1.6.5:download -DnexusUrl=https://nexus.magnolia-cms.com -Dusername=anonymous -Dpassword=anonymous -DtemplateId=magnolia-community-public
+- cd -
+script:
+- mvn clean install
+cache:
+  directories:
+  - "~/.m2/repository"

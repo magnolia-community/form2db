@@ -101,9 +101,9 @@
     </dependencies>
 
     <scm>
-        <connection>scm:git:https://git.magnolia-cms.com/forge/form2db.git</connection>
-        <developerConnection>scm:git:https://git.magnolia-cms.com/forge/form2db.git</developerConnection>
-        <url>https://git.magnolia-cms.com/projects/FORGE/repos/form2db/browse</url>
+        <connection>scm:git:https://github.com/magnolia-community/form2db.git</connection>
+        <developerConnection>scm:git:https://github.com/magnolia-community/form2db.git</developerConnection>
+        <url>https://github.com/magnolia-community/form2db</url>
         <tag>HEAD</tag>
     </scm>
 </project>

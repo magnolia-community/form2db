@@ -1,4 +1,4 @@
-[![Build Status](https://travis-ci.com/github/magnolia-community/form2db.svg?branch=master)](https://travis-ci.com/github/magnolia-community/form2db) 
+[![Build Status](https://api.travis-ci.com/magnolia-community/form2db.svg?branch=master)](https://travis-ci.com/github/magnolia-community/form2db) 
 [![Magnolia compatibility](https://img.shields.io/badge/magnolia-5.7-brightgreen.svg)](https://www.magnolia-cms.com)
 [![Magnolia compatibility](https://img.shields.io/badge/magnolia-6.1-brightgreen.svg)](https://www.magnolia-cms.com)
 

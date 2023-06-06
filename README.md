@@ -26,11 +26,11 @@ Maven dependency
 <dependency>
     <groupId>de.marvinkerkhoff</groupId>
     <artifactId>form2db-app</artifactId>
-    <version>1.5.0</version>
+    <version>1.6.0</version>
 </dependency>
 ```
 
 Versions
 -----------------
 * Version 1.5.0 is compatible with Magnolia 5.6.x, 5.7.x and 6.1.x
-* Version 1.6.0-SNAPSHOT is compatible with Magnolia 6.2.x
+* Version 1.6.0 is compatible with Magnolia 6.2.x

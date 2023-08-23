@@ -8,7 +8,7 @@ import info.magnolia.cms.core.FileSystemHelper;
 import info.magnolia.cms.util.QueryUtil;
 import info.magnolia.jcr.util.NodeTypes;
 import info.magnolia.objectfactory.Components;
-import org.apache.commons.collections.CollectionUtils;
+import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.CellStyle;

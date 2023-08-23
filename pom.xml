@@ -24,6 +24,7 @@
         <magnoliaFormVersion>2.5.2</magnoliaFormVersion>
         <magnolia.dam.version>3.0.2</magnolia.dam.version>
         <poi.version>4.1.2</poi.version>
+        <commons-collections4.version>4.4</commons-collections4.version>
     </properties>
 
     <licenses>
@@ -62,6 +63,12 @@
             <groupId>info.magnolia.dam</groupId>
             <artifactId>magnolia-dam-jcr</artifactId>
             <version>${magnolia.dam.version}</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-collections4</artifactId>
+            <version>${commons-collections4.version}</version>
             <scope>provided</scope>
         </dependency>
         <dependency>
